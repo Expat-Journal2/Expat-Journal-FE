@@ -1,27 +1,21 @@
+import {connect} from "react-redux"
+import axios from "axios";
 
+function SignupForm() {
 
-import React from 'react'
+const [name, setName, handleName] = useInput("");
+const [username, setUserName, handleUserName] = useInput("");
+const [password, setPassword, handlePassword] = useInput("");
+const [checked, setChecked, handleChecked] = useInput(false);
 
-function SignupForm(props) {
-    // const {
-    //     values,
-    //     onInputChange,
-    //     onCheckboxChange,
-    //     onSubmit,
-    //     disabled,
-    //    
-    // } = props
 
     return (
         <form>
             <h2>Signup Form</h2>
-
-
-
             {/* ////////// TEXT INPUTS ////////// */}
 
             <label>Name:&nbsp;
-      <input
+            <input
                     value={props.name}
                     // onChange={onInputChange}
                     name='name'
