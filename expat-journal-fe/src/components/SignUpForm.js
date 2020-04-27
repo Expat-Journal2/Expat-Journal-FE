@@ -1,16 +1,14 @@
+
 import { connect } from "react-redux"
 import axios from "axios";
-import React from 'react'
-import styled from 'styled-components'
-import FormValidation from './utils/validation'
 import { axiosWithAuth } from "../utils/axiosWithAuth"
+import React from 'react';
+import styled from 'styled-components';
 import { useInput } from "../hooks/useInput";
 
-function SignupForm(props) {
 
-
-    const Form = styled.form
-        `
+const Form = styled.form
+    `
         display: flex;
         flex-direction: column;
         background-color: lightgrey;
@@ -19,29 +17,30 @@ function SignupForm(props) {
         padding: 2% 0; 
         `
 
-    const Label = styled.label
-        `
+const Label = styled.label
+    `
         justify-content: flex-end;
         `
 
-    const Input = styled.input
+const Input = styled.input
+    `
+        width: 30%;
+        margin-top: 3%;
         `
 
-width: 30%;
-margin-top: 3%;
+function SignupForm(props) {
 
 
-`
-    const [name, setName, handleName] = useInput("");
+    const [fullname, setFullName, handleFullName] = useInput("");
     const [username, setUserName, handleUserName] = useInput("");
     const [password, setPassword, handlePassword] = useInput("");
+    const [password2, setPassword2, handlePassword2] = useInput("")
     const [checked, setChecked, handleChecked] = useInput(false);
 
 
-
     // const verifyPasswordValidator = (password.value, verifyPassword.value) => {
-    //      if (verifyPassword.value === password.value)        }
-    //  }
+    //     if (verifyPassword.value === password.value)        }
+    // }
     const newUser = {
         fullname: fullname,
         username: username,
@@ -121,7 +120,6 @@ const mapStateToProps = state => {
         isDisabled: state.formReducer.isDisabled,
     }
 }
-
 export default connect(
     mapStateToProps,
     {},

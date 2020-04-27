@@ -1,123 +1,45 @@
-
-import { connect } from "react-redux"
-import axios from "axios";
-import { axiosWithAuth } from "../utils/axiosWithAuth"
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Login } from "../store/actions";
 import { useInput } from "../hooks/useInput";
-
-function SignupForm(props) {
-    const Form = styled.form
-        `
-        display: flex;
-        flex-direction: column;
-        background-color: lightgrey;
-        width: 50%;
-        margin: 3% auto;
-        padding: 2% 0; 
-        `
-
-    const Label = styled.label
-        `
-        justify-content: flex-end;
-        `
-
-    const Input = styled.input
-        `
-        width: 30%;
-        margin-top: 3%;
-        `
-
-    const [fullname, setFullName, handleFullName] = useInput("");
-    const [username, setUserName, handleUserName] = useInput("");
-    const [password, setPassword, handlePassword] = useInput("");
-    const [password2, setPassword2, handlePassword2] = useInput("")
-    const [checked, setChecked, handleChecked] = useInput(false);
-
-
-    // const verifyPasswordValidator = (password.value, verifyPassword.value) => {
-    //     if (verifyPassword.value === password.value)        }
-    // }
-    const newUser = {
-        fullname: fullname,
-        username: username,
-        password: password
-    }
-
-    const SubmitRegistration = (event) => {
-        event.preventDefault();
-        axiosWithAuth()
-            .post('/api/auth/register', newUser)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
+import styled from 'styled-components';
+function LoginForm(props) {
+    const [username, setUserName, handleUserName] = useInput("")
+    const [password, setPassword, handlePassword] = useInput("")
     return (
-        <Form onSubmit={SubmitRegistration}>
-            <h2>Signup Form</h2>
-            <Label>Name:&nbsp;
-                <Input
-
-                    onChange={e => { handleFullName(e.target.value) }}
-                    value={fullname}
-                    name='fullname'
-                    type='text'
-                />
-            </Label>
+        <form>
+            <h2>Log In</h2>
+            {/* ////////// TEXT INPUTS ////////// */}
             <label>Username:&nbsp;
-                <Input
+                <input
                     value={username}
-                    onChange={e => { e.preventDefault(); handleUserName(e.target.value) }}
-                    name='username'
+                    onChange={handleUserName}
+                    name='name'
                     type='text'
                 />
             </label>
             <label>Password:&nbsp;
-                <Input
+      <input
                     value={password}
-                    onChange={e => { e.preventDefault(); handlePassword(e.target.value) }}
+                    onChange={handlePassword}
                     name='password'
                     type='password'
-                />
-            </label>
-            <label>Verify Password:&nbsp;
-                <Input
-                    value={password2}
-                    onChange={e => { e.preventDefault(); handlePassword2(e.target.value) }}
-                    name='password2'
-                    type='password'
-                />
-            </label>
-
-
-            {/* ////////// CHECKBOXES ////////// */}
-            <label>
-                <Input
-                    checked={checked}
-                    onChange={e => { e.preventDefault(); handleChecked(e.target.value) }}
-                    name='termsOfService'
-                    type="checkbox"
-                />
-                I Agree to the Terms and Conditions
-            </label>
-
+                /></label>
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
-            <button disabled={props.isDisabled}
-            >Sign Up</button>
-        </Form >
+            <button //onClick={onSubmit} disabled={disabled}
+            >Log In</button>
+        </form >
     )
 }
-
-
 const mapStateToProps = state => {
+    console.log(`mapstatetoprops on loginform`, state)
     return {
-        isDisabled: state.formReducer.isDisabled,
+        fullname: state.formReducer.fullname,
+        username: state.formReducer.username,
+        password: state.formReducer.password
     }
 }
 export default connect(
     mapStateToProps,
-    {},
-)(SignupForm)
+    { Login }
+)(LoginForm)
