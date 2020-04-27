@@ -1,7 +1,9 @@
 export const initialState = {
-    fullname: "",
-    username: "",
-    password: ""
+    fullname: "gordon caister",
+    username: "gordon",
+    password: "gordon",
+    isLoggedIn: false,
+    isLoading: false
 }
 
 export const formReducer = (state = initialState, action) => {
