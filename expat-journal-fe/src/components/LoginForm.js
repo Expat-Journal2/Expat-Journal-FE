@@ -3,11 +3,18 @@ import {connect} from "react-redux";
 import {Login} from "../store/actions"
 
 function LoginInForm(){
-    return null;
+    const user= {
+        usernane: props.username,
+        password: props.password
+    }
+    return (
+        <button onClick={Login(user)}
+    )
 }
 
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         fullname: state.formReducer.fullname,
         username: state.formReducer.username,
