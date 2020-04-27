@@ -18,7 +18,7 @@ const [password, setPassword, handlePassword] = useInput("")
             <label>Username:&nbsp;
                 <input
                     value={username}
-                    onChange={handleUserName}
+                    onChange={e => {handleUserName(e.target.value)}}
                     name='name'
                     type='text'
                 />
@@ -28,7 +28,7 @@ const [password, setPassword, handlePassword] = useInput("")
             <label>Password:&nbsp;
       <input
                     value={password}
-                    onChange={handlePassword}
+                    onChange={e => {handlePassword(e.target.value)}}
                     name='password'
                     type='password'
                 /></label>

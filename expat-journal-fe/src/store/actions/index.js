@@ -1,5 +1,6 @@
 import {axiosWithAuth} from "../../utils/axiosWithAuth";
 import {initialState, formReducer} from "../reducers";
+import {useHistory} from "react-router-dom"
 
 export const Login = user => {
     return dispatch => {
@@ -15,5 +16,13 @@ export const Login = user => {
             console.log("error from actions on login_start",err)
             dispatch ({type: "LOGIN_FAILURE", payload:`${err}`})
         })
+    }
+}
+
+export const LogOut = () => {
+    return dispatch=>{
+        dispatch({type: "LOG_OUT"})
+        localStorage.removeItem('token')
+        push("/loggedout")
     }
 }

@@ -42,6 +42,16 @@ export const formReducer = (state = initialState, action) => {
                 fullname: action.payload.fullname,
                 id: action.payload.id
             }
+        case "LOG_OUT":
+            return {
+                ...state,
+                error: "",
+                isLoggedIn: false,
+                isLoading: false,
+                username: "",
+                fullname: "",
+                id: ""
+            }
         default:
             return state;
     }
