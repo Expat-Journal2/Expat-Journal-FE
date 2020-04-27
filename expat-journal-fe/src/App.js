@@ -12,8 +12,6 @@ import './App.css';
 
 function App() {
 
-
-
   return (
     <div className="App">
       <h1>Expat-Journal-2</h1>
