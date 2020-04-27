@@ -2,7 +2,7 @@
 import { connect } from "react-redux"
 import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth"
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 import { useInput } from "../hooks/useInput";
 
@@ -35,7 +35,11 @@ function SignupForm(props) {
     const [username, setUserName, handleUserName] = useInput("");
     const [password, setPassword, handlePassword] = useInput("");
     const [password2, setPassword2, handlePassword2] = useInput("")
-    const [checked, setChecked, handleChecked] = useInput(false);
+    const [checked,setChecked] = useState(false);
+
+    function handleChecked() {
+        checked ? setChecked(false) : setChecked(true);
+    }
 
 
     // const verifyPasswordValidator = (password.value, verifyPassword.value) => {
@@ -73,7 +77,7 @@ function SignupForm(props) {
             <label>Username:&nbsp;
                 <Input
                     value={username}
-                    onChange={e => { e.preventDefault(); handleUserName(e.target.value) }}
+                    onChange={e => { handleUserName(e.target.value) }}
                     name='username'
                     type='text'
                 />
@@ -81,7 +85,7 @@ function SignupForm(props) {
             <label>Password:&nbsp;
                 <Input
                     value={password}
-                    onChange={e => { e.preventDefault(); handlePassword(e.target.value) }}
+                    onChange={e => { handlePassword(e.target.value) }}
                     name='password'
                     type='password'
                 />
@@ -89,7 +93,7 @@ function SignupForm(props) {
             <label>Verify Password:&nbsp;
                 <Input
                     value={password2}
-                    onChange={e => { e.preventDefault(); handlePassword2(e.target.value) }}
+                    onChange={e => { handlePassword2(e.target.value) }}
                     name='password2'
                     type='password'
                 />
@@ -100,7 +104,7 @@ function SignupForm(props) {
             <label>
                 <Input
                     checked={checked}
-                    onChange={e => { e.preventDefault(); handleChecked(e.target.value) }}
+                    onChange={  handleChecked}
                     name='termsOfService'
                     type="checkbox"
                 />
@@ -108,7 +112,8 @@ function SignupForm(props) {
             </label>
 
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
-            <button disabled={props.isDisabled}
+            <button 
+            // disabled={props.isDisabled}
             >Sign Up</button>
         </Form >
     )
