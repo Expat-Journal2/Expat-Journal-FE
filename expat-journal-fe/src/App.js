@@ -1,5 +1,6 @@
 import React from 'react';
-import SignUpForm from "./components/SignUpForm"
+import SignUpForm from "./components/SignUpForm";
+import LoginForm from "./components/LoginForm"
 
 import './App.css';
 
@@ -9,6 +10,7 @@ function App() {
       <h1>Expat-Journal-2</h1>
       <h2>This is a temporary Home Page Component</h2>
       <SignUpForm />
+      <LoginForm />
     </div>
   );
 }

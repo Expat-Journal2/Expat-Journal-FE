@@ -2,19 +2,20 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {Login} from "../store/actions"
 
-function LoginInForm(){
+function LoginForm(props){
     const user= {
-        usernane: props.username,
+        username: props.username,
         password: props.password
     }
+    console.log("login form user", user)
     return (
-        <button onClick={Login(user)}
+        <button onClick={props.Login(user)} >LOG IN</button>
     )
 }
 
 
 const mapStateToProps = state => {
-    console.log(state)
+    console.log(`mapstatetoprops on loginform`,state)
     return {
         fullname: state.formReducer.fullname,
         username: state.formReducer.username,
@@ -26,4 +27,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
      {Login}
-     )(LoginInForm)
+     )(LoginForm)
