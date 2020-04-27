@@ -1,4 +1,5 @@
 export const initialState = {
+    id: 5,
     fullname: "gordon caister",
     username: "gordon",
     password: "gordon",
@@ -35,7 +36,10 @@ export const formReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: "",
-                isLoading: false
+                isLoading: false,
+                username: action.payload.username,
+                fullname: action.payload.fullname,
+                id: action.payload.id
             }
         default:
             return state;
