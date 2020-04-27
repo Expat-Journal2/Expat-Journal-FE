@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-// import { connect } from "react-redux";
-// import { Login } from "../store/actions"
+import { connect } from "react-redux";
+import { Login } from "../store/actions"
 import styled from 'styled-components'
 
 function LoginForm(props) {
@@ -57,6 +57,8 @@ const mapStateToProps = state => {
 
     }
 }
+
+
 
 export default connect(
     mapStateToProps,

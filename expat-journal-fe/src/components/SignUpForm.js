@@ -2,8 +2,9 @@ import { connect } from "react-redux"
 import axios from "axios";
 import React from 'react'
 import styled from 'styled-components'
+import FormValidation from './utils/validation'
 
-function SignupForm() {
+function SignupForm(props) {
 
 
 
@@ -34,10 +35,11 @@ margin-top: 3%;
 
 
 `
-    const [name, setName, handleName] = useInput("");
-    const [username, setUserName, handleUserName] = useInput("");
-    const [password, setPassword, handlePassword] = useInput("");
-    const [checked, setChecked, handleChecked] = useInput(false);
+    // const [name, setName, handleName] = useInput("");
+    // const [username, setUserName, handleUserName] = useInput("");
+    // const [password, setPassword, handlePassword] = useInput("");
+    // const [checked, setChecked, handleChecked] = useInput(false);
+
 
 
     return (
