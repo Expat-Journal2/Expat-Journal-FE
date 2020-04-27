@@ -1,36 +1,34 @@
-import React, { useEffect } from "react";
-// import { connect } from "react-redux";
-// import { Login } from "../store/actions"
-import styled from 'styled-components'
+import React, {useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Login } from "../store/actions";
+import {useInput} from "../hooks/useInput";
+import styled from 'styled-components';
 
 function LoginForm(props) {
 
-    const user = {
-        username: props.username,
-        password: props.password
-    }
+const [username, setUserName, handleUserName] = useInput("")
+const [password, setPassword, handlePassword] = useInput("")
+
 
     return (
         <form>
             <h2>Log In</h2>
-
-
-
             {/* ////////// TEXT INPUTS ////////// */}
 
             <label>Username:&nbsp;
-      <input
-                    value={props.username}
-                    // onChange={onInputChange}
+                <input
+                    value={username}
+                    onChange={handleUserName}
                     name='name'
                     type='text'
-                /></label>
+                />
+            </label>
 
 
             <label>Password:&nbsp;
       <input
-                    value={props.password}
-                    // onChange={onInputChange}
+                    value={password}
+                    onChange={handlePassword}
                     name='password'
                     type='password'
                 /></label>

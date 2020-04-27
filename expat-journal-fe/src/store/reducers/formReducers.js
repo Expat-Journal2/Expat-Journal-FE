@@ -6,6 +6,7 @@ export const initialState = {
     isLoggedIn: false,
     isLoading: false,
     isChecked: false,
+    isDisabled: true,
     error: "",
 
 }
