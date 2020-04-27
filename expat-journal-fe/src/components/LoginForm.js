@@ -8,6 +8,7 @@ function LoginInForm(){
 
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         fullname: state.formReducer.fullname,
         username: state.formReducer.username,
