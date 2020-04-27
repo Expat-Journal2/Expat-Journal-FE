@@ -3,8 +3,12 @@ import React, { useEffect } from "react";
 // import { Login } from "../store/actions"
 import styled from 'styled-components'
 
-function LoginInForm(props) {
+function LoginForm(props) {
 
+    const user = {
+        username: props.username,
+        password: props.password
+    }
 
     return (
         <form>
@@ -38,14 +42,14 @@ function LoginInForm(props) {
             <button //onClick={onSubmit} disabled={disabled}
             >Log In</button>
         </form >
+
     )
 }
-
-// export default LoginInForm
 
 
 
 const mapStateToProps = state => {
+    console.log(`mapstatetoprops on loginform`, state)
     return {
         fullname: state.formReducer.fullname,
         username: state.formReducer.username,
@@ -57,4 +61,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { Login }
-)(LoginInForm)
+)(LoginForm)

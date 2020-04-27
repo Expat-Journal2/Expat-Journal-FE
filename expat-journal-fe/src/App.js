@@ -19,8 +19,7 @@ function App() {
       <h1>Expat-Journal-2</h1>
       <h2>This is a temporary Home Page Component</h2>
       <SignUpForm />
-      <LoginInForm />
-
+      <LoginForm />
     </div>
   );
 }

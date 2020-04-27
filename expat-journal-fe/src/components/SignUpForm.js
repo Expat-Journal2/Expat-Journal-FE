@@ -1,10 +1,14 @@
-
-
+import { connect } from "react-redux"
+import axios from "axios";
 import React from 'react'
 import styled from 'styled-components'
 
-const Form = styled.form
-    `
+function SignupForm() {
+
+
+
+    const Form = styled.form
+        `
 display: flex;
 flex-direction: column;
 background-color: lightgrey;
@@ -16,41 +20,34 @@ padding: 2% 0;
 
 `
 
-const Label = styled.label
-    `
+    const Label = styled.label
+        `
 justify-content: flex-end;
 
 `
 
-const Input = styled.input
-    `
+    const Input = styled.input
+        `
 
 width: 30%;
 margin-top: 3%;
 
 
 `
+    const [name, setName, handleName] = useInput("");
+    const [username, setUserName, handleUserName] = useInput("");
+    const [password, setPassword, handlePassword] = useInput("");
+    const [checked, setChecked, handleChecked] = useInput(false);
 
-function SignupForm(props) {
-    // const {
-    //     values,
-    //     onInputChange,
-    //     onCheckboxChange,
-    //     onSubmit,
-    //     disabled,
-    //    
-    // } = props
 
     return (
         <Form>
             <h2>Signup Form</h2>
-
-
-
             {/* ////////// TEXT INPUTS ////////// */}
 
             <Label>Name:&nbsp;
       <Input
+
                     value={props.name}
                     // onChange={onInputChange}
                     name='name'
