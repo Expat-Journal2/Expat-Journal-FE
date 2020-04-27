@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
+import {Login} from "../store/actions"
 
 function LoginInForm(){
     return null;
@@ -17,5 +18,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-     {LogIn}
+     {Login}
      )(LoginInForm)
