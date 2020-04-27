@@ -1,6 +1,35 @@
 
 
 import React from 'react'
+import styled from 'styled-components'
+
+const Form = styled.form
+    `
+display: flex;
+flex-direction: column;
+background-color: lightgrey;
+
+width: 50%;
+margin: 3% auto;
+padding: 2% 0; 
+
+
+`
+
+const Label = styled.label
+    `
+justify-content: flex-end;
+
+`
+
+const Input = styled.input
+    `
+
+width: 30%;
+margin-top: 3%;
+
+
+`
 
 function SignupForm(props) {
     // const {
@@ -13,30 +42,30 @@ function SignupForm(props) {
     // } = props
 
     return (
-        <form>
+        <Form>
             <h2>Signup Form</h2>
 
 
 
             {/* ////////// TEXT INPUTS ////////// */}
 
-            <label>Name:&nbsp;
-      <input
+            <Label>Name:&nbsp;
+      <Input
                     value={props.name}
                     // onChange={onInputChange}
                     name='name'
                     type='text'
-                /></label>
+                /></Label>
 
             <label>Username:&nbsp;
-      <input
+      <Input
                     value={props.username}
                     // onChange={onInputChange}
                     name='username'
                     type='text'
                 /></label>
             <label>Password:&nbsp;
-      <input
+      <Input
                     value={props.password}
                     // onChange={onInputChange}
                     name='password'
@@ -44,7 +73,7 @@ function SignupForm(props) {
                 /></label>
 
             <label>Verify Password:&nbsp;
-      <input
+      <Input
                     value={props.verifyPassword}
                     // onChange={onInputChange}
                     name='verifyPassword'
@@ -53,7 +82,7 @@ function SignupForm(props) {
 
 
             {/* ////////// CHECKBOXES ////////// */}
-            <label><input
+            <label><Input
 
                 checked={props.termsOfService}
                 //onChange={onCheckboxChange}
@@ -63,7 +92,7 @@ function SignupForm(props) {
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
             <button //onClick={onSubmit} disabled={disabled}
             >Sign Up</button>
-        </form >
+        </Form >
     )
 }
 

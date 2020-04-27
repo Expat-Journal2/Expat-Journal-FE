@@ -1,10 +1,48 @@
-import React, {useEffect} from "react";
-import {connect} from "react-redux";
-import {Login} from "../store/actions"
+import React, { useEffect } from "react";
+// import { connect } from "react-redux";
+// import { Login } from "../store/actions"
+import styled from 'styled-components'
 
-function LoginInForm(){
-    return null;
+function LoginInForm(props) {
+
+
+    return (
+        <form>
+            <h2>Log In</h2>
+
+
+
+            {/* ////////// TEXT INPUTS ////////// */}
+
+            <label>Username:&nbsp;
+      <input
+                    value={props.username}
+                    // onChange={onInputChange}
+                    name='name'
+                    type='text'
+                /></label>
+
+
+            <label>Password:&nbsp;
+      <input
+                    value={props.password}
+                    // onChange={onInputChange}
+                    name='password'
+                    type='password'
+                /></label>
+
+
+
+
+            {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
+            <button //onClick={onSubmit} disabled={disabled}
+            >Log In</button>
+        </form >
+    )
 }
+
+// export default LoginInForm
+
 
 
 const mapStateToProps = state => {
@@ -18,5 +56,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-     {Login}
-     )(LoginInForm)
+    { Login }
+)(LoginInForm)

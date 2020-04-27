@@ -3,11 +3,13 @@ export const initialState = {
     username: "gordon",
     password: "gordon",
     isLoggedIn: false,
-    isLoading: false
+    isLoading: false,
+    isChecked: false,
+    //termsOfService: false,
 }
 
 export const formReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         default:
             return state;
     }
