@@ -10,7 +10,7 @@ export const initialState = {
 }
 
 export const formReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case 'LOGIN_START':
             return {
                 ...state,
