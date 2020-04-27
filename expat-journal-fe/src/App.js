@@ -1,6 +1,6 @@
 import React from 'react';
 import SignUpForm from "./components/SignUpForm"
-import LoginInForm from "./components/LoginForm"
+import LoginForm from "./components/LoginForm"
 import FormValidation from './utils/validation'
 
 import './App.css';
