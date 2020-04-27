@@ -1,13 +1,14 @@
+
 import { connect } from "react-redux"
 import axios from "axios";
-import {axiosWithAuth} from "../utils/axiosWithAuth"
+import { axiosWithAuth } from "../utils/axiosWithAuth"
 import React from 'react';
 import styled from 'styled-components';
-import {useInput} from "../hooks/useInput";
+import { useInput } from "../hooks/useInput";
 
-function SignupForm(props) {
-    const Form = styled.form
-        `
+
+const Form = styled.form
+    `
         display: flex;
         flex-direction: column;
         background-color: lightgrey;
@@ -16,17 +17,20 @@ function SignupForm(props) {
         padding: 2% 0; 
         `
 
-    const Label = styled.label
-        `
+const Label = styled.label
+    `
         justify-content: flex-end;
         `
 
-    const Input = styled.input
-        `
+const Input = styled.input
+    `
         width: 30%;
         margin-top: 3%;
         `
-    
+
+function SignupForm(props) {
+
+
     const [fullname, setFullName, handleFullName] = useInput("");
     const [username, setUserName, handleUserName] = useInput("");
     const [password, setPassword, handlePassword] = useInput("");
@@ -37,13 +41,13 @@ function SignupForm(props) {
     // const verifyPasswordValidator = (password.value, verifyPassword.value) => {
     //     if (verifyPassword.value === password.value)        }
     // }
-    const newUser={
+    const newUser = {
         fullname: fullname,
         username: username,
         password: password
     }
 
-    const SubmitRegistration= (event)=>{
+    const SubmitRegistration = (event) => {
         event.preventDefault();
         axiosWithAuth()
             .post('/api/auth/register', newUser)
@@ -60,7 +64,7 @@ function SignupForm(props) {
             <Label>Name:&nbsp;
                 <Input
 
-                    onChange={e=>{handleFullName(e.target.value)}}
+                    onChange={e => { handleFullName(e.target.value) }}
                     value={fullname}
                     name='fullname'
                     type='text'
@@ -69,7 +73,7 @@ function SignupForm(props) {
             <label>Username:&nbsp;
                 <Input
                     value={username}
-                    onChange={e=>{e.preventDefault();handleUserName(e.target.value)}}
+                    onChange={e => { e.preventDefault(); handleUserName(e.target.value) }}
                     name='username'
                     type='text'
                 />
@@ -77,7 +81,7 @@ function SignupForm(props) {
             <label>Password:&nbsp;
                 <Input
                     value={password}
-                    onChange={e=>{e.preventDefault();handlePassword(e.target.value)}}
+                    onChange={e => { e.preventDefault(); handlePassword(e.target.value) }}
                     name='password'
                     type='password'
                 />
@@ -85,7 +89,7 @@ function SignupForm(props) {
             <label>Verify Password:&nbsp;
                 <Input
                     value={password2}
-                    onChange={e=>{e.preventDefault();handlePassword2(e.target.value)}}
+                    onChange={e => { e.preventDefault(); handlePassword2(e.target.value) }}
                     name='password2'
                     type='password'
                 />
@@ -96,9 +100,9 @@ function SignupForm(props) {
             <label>
                 <Input
                     checked={checked}
-                    onChange={e=>{e.preventDefault();handleChecked(e.target.value)}}
+                    onChange={e => { e.preventDefault(); handleChecked(e.target.value) }}
                     name='termsOfService'
-                    type="checkbox" 
+                    type="checkbox"
                 />
                 I Agree to the Terms and Conditions
             </label>
@@ -119,4 +123,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     {},
-) (SignupForm)
+)(SignupForm)
