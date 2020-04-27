@@ -1,10 +1,10 @@
 import {axiosWithAuth} from "../../utils/axiosWithAuth";
 import {initialState, formReducer} from "../reducers";
-import {useHistory} from "react-router-dom"
 
-export const Login = user => {
+export const Login = (e,user) => {
     return dispatch => {
         dispatch({type: 'LOGIN_START'});
+        e.preventDefault();
         axiosWithAuth()
         .post("/api/auth/login", user)
         .then(res => {
@@ -23,6 +23,5 @@ export const LogOut = () => {
     return dispatch=>{
         dispatch({type: "LOG_OUT"})
         localStorage.removeItem('token')
-        push("/loggedout")
     }
 }

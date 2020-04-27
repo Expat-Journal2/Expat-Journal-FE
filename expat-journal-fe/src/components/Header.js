@@ -1,5 +1,7 @@
 import React from "react";
+import {connect} from "react-redux"
 import {Link, useHistory} from "react-router-dom"
+import {LogOut} from "../store/actions"
 
 function Header(){
 
@@ -10,10 +12,20 @@ function Header(){
             <h1>Foreigner Files</h1>
             <nav className="headerNav">
                 <Link to="/dashboard"><button onClick={()=>{push("/dashboard")}}>Dashboard</button></Link>
-                <Link to="/loggedout"><button>Log Out</button></Link>
+                <Link to="/loggedout"><button onClick={LogOut}>Log Out</button></Link>
             </nav>
         </div>
     )
 }
 
-export default Header;
+const mapStateToProps = state =>{
+return {
+    username: state.formReducer.username,
+    fullname: state.formReducer.fullname,
+    id: state.formReducer.id
+}
+}
+export default connect(
+    mapStateToProps,
+    {LogOut}
+)(Header);
