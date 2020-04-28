@@ -34,7 +34,10 @@ function LoginForm(props) {
             <label>Username:&nbsp;
                 <input
                     value={username}
+
+   
                     onChange={e=> handleUserName(e.target.value)}
+
                     name='name'
                     type='text'
                 />
@@ -42,7 +45,9 @@ function LoginForm(props) {
             <label>Password:&nbsp;
       <input
                     value={password}
+
                     onChange={e=> handlePassword(e.target.value)}
+
                     name='password'
                     type='password'
                 /></label>
