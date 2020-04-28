@@ -1,7 +1,10 @@
 import * as yup from 'yup'
 
 
-///FORM VALIDATION 
+///FORM VALIDATIONS
+
+
+///SIGNUP AND LOGIN VALIDATIONS
 
 const formValidation = yup.object().shape({
     fullname: yup
@@ -29,7 +32,22 @@ const formValidation = yup.object().shape({
     termsOfService: yup
         .boolean()
         .required("You must agree!!")
-        .oneOf([true], "You must agree to the Terms of Service!")
+        .oneOf([true], "You must agree to the Terms of Service!"),
+
+
+
+    ////////ADD POST VALIDATION////////
+    title: yup
+        .string()
+        .required("Please add a title to your post"),
+
+    textbox: yup
+        .string()
+        .required("Please include some text in your post"),
+
+    created_at: yup
+        .string()
+        .required("please add a date to your post"),
 
 
 })

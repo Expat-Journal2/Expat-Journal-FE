@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 
 import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import formValidation from "../utils/validation"
+import * as yup from 'yup'
 
 
 import { axiosWithAuth } from "../utils/axiosWithAuth"
@@ -14,15 +16,27 @@ const initialState = {
     password: ""
 }
 
+
+const initialErrors = {
+    username: "",
+    password: ""
+}
+
 function LoginForm(props) {
-const [user, setUser] = useState({})
-    const {push} = useHistory();
-  
+
+
+    const [formValues, setFormValues] = useState(initialState)
+    const [formErrors, setFormErrors] = useState(initialErrors)
+    const [formDisabled, setFormDisabled] = useState(true)
+
+    const [user, setUser] = useState({})
+    const { push } = useHistory();
+
 
     const submitLogin = (event) => {
         event.preventDefault();
         axiosWithAuth()
-            .post('/api/auth/login', user)
+            .post('/api/auth/login', formValues)
             .then(res => {
                 console.log(res.data)
                 localStorage.setItem('token', res.data.token)
@@ -35,8 +49,34 @@ const [user, setUser] = useState({})
     }
 
     const handleChange = event => {
-        setUser({...user, 
-            [event.target.name]: event.target.value})   
+
+        const name = event.target.name
+        const value = event.target.value
+
+
+        yup
+            .reach(formValidation, name)
+            .validate(value)
+            .then(valid => {
+
+                setFormErrors({
+                    ...formErrors,
+                    [name]: formValues.name
+                })
+            })
+
+            .catch(err => {
+                setFormErrors({
+                    ...formErrors,
+                    [name]: err.message
+                })
+            })
+
+
+        setFormValues({
+            ...formValues,
+            [name]: value,
+        })
     }
 
     return (
@@ -51,6 +91,9 @@ const [user, setUser] = useState({})
                     type='text'
                 />
             </label>
+            <div>
+                {formErrors.username}
+            </div>
             <label>Password:&nbsp;
       <input
                     value={user.password}
@@ -59,9 +102,12 @@ const [user, setUser] = useState({})
                     name='password'
                     type='password'
                 /></label>
+            <div>
+                {formErrors.password}
+            </div>
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
-            <button 
-            onClick={submitLogin} 
+            <button
+                onClick={submitLogin}
             //disabled={disabled}
             >Log In</button>
         </form >
