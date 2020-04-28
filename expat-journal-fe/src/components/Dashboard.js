@@ -3,6 +3,7 @@ import Header from "./Header";
 import {fetchUserBlogs, fetchUserInfo} from "../store/actions/index"
 import {connect, useDispatch} from "react-redux";
 import AddPost from "./AddPost"
+import AllPosts from "./AllPosts";
 
 
 
@@ -17,6 +18,7 @@ useEffect(()=>{
         <div className="dashboard">
             <Header />
             <AddPost />
+            <AllPosts/>
         </div>
     )
 }

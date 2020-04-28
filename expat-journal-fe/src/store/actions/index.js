@@ -37,7 +37,7 @@ export const fetchAllPosts = () => {
         axiosWithAuth()
         .get(`/api/blogs`)
         .then(res=> {
-            console.log(res.data)
+            console.log("fetchAllPosts:",res.data)
             dispatch({type: "FETCH_ALL_POSTS_SUCCESS", payload: res.data})
         })
         .catch(err => {
