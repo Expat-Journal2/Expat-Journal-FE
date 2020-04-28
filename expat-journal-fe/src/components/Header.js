@@ -11,7 +11,7 @@ function Header(){
         <div className="header">
             <h1>Foreigner Files</h1>
             <nav className="headerNav">
-                <Link to="/dashboard"><button onClick={()=>{push("/dashboard")}}>Dashboard</button></Link>
+                <Link to="/dashboard"><button>Dashboard</button></Link>
                 <Link to="/loggedout"><button onClick={LogOut}>Log Out</button></Link>
             </nav>
         </div>
