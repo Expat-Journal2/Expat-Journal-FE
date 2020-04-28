@@ -4,7 +4,7 @@ import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import formValidation from "../utils/validation"
+import { addPostValidation } from "../utils/validation"
 import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
 
@@ -69,7 +69,7 @@ function AddPost(props) {
 
     useEffect(() => {
 
-        formValidation.isValid(formValues)
+        addPostValidation.isValid(formValues)
             .then(valid => { // either true or false
                 setFormDisabled(!valid)
             })
@@ -102,7 +102,7 @@ function AddPost(props) {
 
 
         yup
-            .reach(formValidation, name)
+            .reach(addPostValidation, name)
             .validate(value)
             .then(valid => {
 

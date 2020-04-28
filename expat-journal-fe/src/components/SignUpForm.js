@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth"
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useInput } from "../hooks/useInput";
-import formValidation from "../utils/validation"
+import { formValidation } from "../utils/validation"
 import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
 

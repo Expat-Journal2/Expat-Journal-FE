@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
 import { useHistory } from "react-router-dom"
-import formValidation from "../utils/validation"
+import { formValidation } from "../utils/validation"
 import * as yup from 'yup'
 
 
