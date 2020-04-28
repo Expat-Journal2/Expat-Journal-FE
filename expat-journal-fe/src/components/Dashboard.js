@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import Header from "./Header";
 import {fetchUserBlogs, fetchUserInfo} from "../store/actions/index"
 import {connect, useDispatch} from "react-redux";
+import AddPost from "./AddPost"
 
 
 
@@ -15,6 +16,7 @@ useEffect(()=>{
     return(
         <div className="dashboard">
             <Header />
+            <AddPost />
         </div>
     )
 }

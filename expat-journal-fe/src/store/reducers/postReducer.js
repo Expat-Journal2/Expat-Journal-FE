@@ -31,9 +31,9 @@ export const postReducer = (state = initialState, action)=>{
             return{
                 ...state,
                 isLoading: false,
-                id:action.id,
-                fullname: action.fullname,
-                username: action.username
+                id:action.payload.id,
+                fullname: action.payload.fullname,
+                username: action.payload.username
             }
         case "FETCH_ALL_POSTS_START":
             return{
@@ -45,6 +45,22 @@ export const postReducer = (state = initialState, action)=>{
                 ...state,
                 blogs:action.payload,
                 isLoading:false
+            }
+        case "ADD_NEW_POST_START":
+            return{
+                ...state,
+                isLoading: true,
+            }
+        case "ADD_NEW_POST_SUCCESS":
+            return{
+                ...state,
+                isLoading: false,
+            }
+        case "ADD_NEW_POST_FAILURE":
+            return{
+                ...state,
+                isLoading:false,
+                error: action.payload
             }
         default:
             return state;

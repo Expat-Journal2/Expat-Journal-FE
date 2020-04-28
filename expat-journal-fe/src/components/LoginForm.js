@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 
 import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { formValidation } from "../utils/validation"
+
 import * as yup from 'yup'
 
 
@@ -96,13 +97,13 @@ function LoginForm(props) {
                 {formErrors.username}
             </div>
             <label>Password:&nbsp;
-      <input
+            <input
                     value={user.password}
                     onChange={handleChange}
-
                     name='password'
                     type='password'
-                /></label
+                />
+                </label>
 
             <div>
                 {formErrors.password}
@@ -113,6 +114,7 @@ function LoginForm(props) {
                 onClick={submitLogin}
             //disabled={disabled}
             >Log In</button>
+            <h4>Need an account? Click <Link to="/register">HERE</Link> to sign up!</h4>
         </form >
     )
 }

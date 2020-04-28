@@ -8,7 +8,7 @@ import LoggedOut from "./components/LoggedOut"
 import Home from "./components/Home"
 import './App.css';
 import Dashboard from './components/Dashboard';
-import AddPost from "./components/AddPost"
+
 
 
 
@@ -28,7 +28,7 @@ function App() {
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <Route path="/loggedout"><LoggedOut /></Route>
       </Switch>
-      <AddPost />
+
     </div>
   );
 }

@@ -5,9 +5,11 @@ import { axiosWithAuth } from "../utils/axiosWithAuth"
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useInput } from "../hooks/useInput";
+
 import { formValidation } from "../utils/validation"
+
 import * as yup from 'yup'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 
 
@@ -232,7 +234,7 @@ function SignupForm(props) {
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
             <Button onClick={onSubmit} disabled={formDisabled}>Sign Up!</Button>
-
+            <h4>Already Have An Account? Click <Link to="/login">HERE</Link> to log in!</h4>
         </Form >
     )
 }
