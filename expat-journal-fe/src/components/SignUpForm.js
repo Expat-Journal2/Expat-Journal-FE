@@ -5,6 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth"
 import React,{useState} from 'react';
 import styled from 'styled-components';
 import { useInput } from "../hooks/useInput";
+import {useHistory} from 'react-router-dom'
 
 
 const Form = styled.form
@@ -29,7 +30,7 @@ const Input = styled.input
         `
 
 function SignupForm(props) {
-
+    const {push} = useHistory()
 
     const [fullname, setFullName, handleFullName] = useInput("");
     const [username, setUserName, handleUserName] = useInput("");
@@ -56,7 +57,8 @@ function SignupForm(props) {
         axiosWithAuth()
             .post('/api/auth/register', newUser)
             .then(res => {
-                console.log(res)
+                console.log(`submitted reg response`, res.data)
+                push('/login')
             })
             .catch(err => {
                 console.log(err)
