@@ -34,7 +34,11 @@ export const formValidation = yup.object().shape({
         .required("You must agree!!")
         .oneOf([true], "You must agree to the Terms of Service!"),
 
+})
 
+
+
+export const addPostValidation = yup.object().shape({
 
     ////////ADD POST VALIDATION////////
     title: yup

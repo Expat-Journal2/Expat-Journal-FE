@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {formValidation} from "../utils/validation"
+import {formValidation, addPostValidation} from "../utils/validation"
 import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
 import {AddNewPost} from "../store/actions"
@@ -66,7 +66,10 @@ function AddPost(props) {
 
 
     useEffect(() => {
-        formValidation.isValid(formValues)
+
+
+        addPostValidation.isValid(formValues)
+
             .then(valid => { // either true or false
                 setFormDisabled(!valid)
             })
@@ -76,7 +79,7 @@ function AddPost(props) {
         const name = evt.target.name
         const value = evt.target.value
         yup
-            .reach(formValidation, name)
+            .reach(addPostValidation, name)
             .validate(value)
             .then(valid => {
                 setFormErrors({
