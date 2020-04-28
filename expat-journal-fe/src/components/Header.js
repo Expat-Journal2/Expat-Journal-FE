@@ -1,18 +1,32 @@
-import React from "react";
-import {connect} from "react-redux"
+import React, {useEffect} from "react";
+import {connect, useDispatch} from "react-redux"
 import {Link, useHistory} from "react-router-dom"
-import {LogOut} from "../store/actions"
+import {fetchAllPosts} from "../store/actions"
+
 
 function Header(props){
 
     const {push} = useHistory()
+    const dispatch = useDispatch()
+
+const LogOut = event => {
+    event.preventDefault();
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId')
+    push("/loggedout")
+}
 
     return (
         <div className="header">
             <h1>Foreigner Files</h1>
             <nav className="headerNav">
                 <Link to="/dashboard"><button>Dashboard</button></Link>
-                <Link to="/loggedout"><button onClick={LogOut}>Log Out</button></Link>
+                <button onClick={
+                    ()=>{
+                        dispatch(fetchAllPosts())
+                    }
+                }>All Posts</button>
+                <button onClick={LogOut}>Log Out</button>
             </nav>
         </div>
     )
@@ -27,5 +41,5 @@ return {
 }
 export default connect(
     mapStateToProps,
-    {LogOut}
+    {fetchAllPosts}
 )(Header);

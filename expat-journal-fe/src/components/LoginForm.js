@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Login } from "../store/actions";
+
 import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
 import {useHistory} from "react-router-dom"
@@ -26,6 +26,7 @@ const [user, setUser] = useState({})
             .then(res => {
                 console.log(res.data)
                 localStorage.setItem('token', res.data.token)
+                localStorage.setItem('userId', res.data.userId)
                 push("/dashboard")
             })
             .catch(err => {
@@ -76,5 +77,5 @@ const mapStateToProps = state => {
 }
 export default connect(
     mapStateToProps,
-    { Login }
+    {}
 )(LoginForm)
