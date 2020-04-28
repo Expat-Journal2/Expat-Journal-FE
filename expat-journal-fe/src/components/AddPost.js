@@ -101,7 +101,7 @@ function AddPost(props) {
     }
     const newPost = {
         title: formValues.title,
-        caption: formValues.textbox,
+        textbox: formValues.textbox,
         created_at: formValues.created_at,
     }
 
@@ -148,7 +148,9 @@ function AddPost(props) {
 
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
+
             {<Button /*onClick={onSubmit}disabled={!formDisabled }*/ >Add New Post</Button>}
+
 
         </Form >
     )
