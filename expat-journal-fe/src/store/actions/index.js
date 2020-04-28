@@ -1,27 +1,47 @@
 import {axiosWithAuth} from "../../utils/axiosWithAuth";
-import {initialState, formReducer} from "../reducers";
+// import {initialState, formReducer, postReducer} from "../reducers";
 
-export const Login = (e,user) => {
+export const fetchUserInfo = () => {
     return dispatch => {
-        dispatch({type: 'LOGIN_START'});
-        e.preventDefault();
+        dispatch({type: "FETCH_USER_START"})
         axiosWithAuth()
-        .post("/api/auth/login", user)
-        .then(res => {
-            localStorage.setItem("token",res.data.token)
-            dispatch ({type: "LOGIN_SUCCESS"})
-            dispatch ({type: "SET_USER", payload: res.data})
+        .get(`/api/users/${localStorage.getItem('userId')}`)
+        .then(res =>{
+            console.log(`fetchUserInfo res`, res)
+            dispatch({type: "FETCH_USER_SUCCESS", payload: res.data})
         })
         .catch(err => {
-            console.log("error from actions on login_start",err)
-            dispatch ({type: "LOGIN_FAILURE", payload:`${err}`})
+            console.log(`fetchUserInfo err`, err)
+        })
+    }
+}
+export const fetchUserBlogs = () => {
+    return dispatch =>{
+        dispatch({type: "FETCH_DATA_START"})
+       
+        axiosWithAuth()
+        .get(`/api/users/${localStorage.getItem('userId')}/blogs`)
+        .then(res => {
+            console.log(res)
+            dispatch({type: "FETCH_DATA_SUCCESS", payload: res})
+        })
+        .catch(err => {
+            console.log(err)
         })
     }
 }
 
-export const LogOut = () => {
-    return dispatch=>{
-        dispatch({type: "LOG_OUT"})
-        localStorage.removeItem('token')
+export const fetchAllPosts = () => {
+    return dispatch => {
+        dispatch({type: "FETCH_ALL_POSTS_START"})
+        axiosWithAuth()
+        .get(`/api/blogs`)
+        .then(res=> {
+            console.log(res.data)
+            dispatch({type: "FETCH_ALL_POSTS_SUCCESS", payload: res.data})
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 }
