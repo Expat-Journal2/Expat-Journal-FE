@@ -47,7 +47,6 @@ function LoginForm(props) {
                 console.log(err.data.message)
                 const error = err.data.message
             })
-            return error
     }
 
     const handleChange = event => {
@@ -103,11 +102,12 @@ function LoginForm(props) {
 
                     name='password'
                     type='password'
-                /></label>
+                /></label
 
             <div>
                 {formErrors.password}
             </div>
+
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
             <button
                 onClick={submitLogin}
