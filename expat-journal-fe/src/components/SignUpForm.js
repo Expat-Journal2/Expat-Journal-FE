@@ -64,10 +64,7 @@ const initialFormErrors = {
 function SignupForm(props) {
     const {push} = useHistory()
 
-    const [fullname, setFullName, handleFullName] = useInput("");
-    const [username, setUserName, handleUserName] = useInput("");
-    const [password, setPassword, handlePassword] = useInput("");
-    const [password2, setPassword2, handlePassword2] = useInput("")
+
     const [checked,setChecked] = useState(false);
 
     function handleChecked() {
@@ -95,10 +92,15 @@ function SignupForm(props) {
                 setFormDisabled(!valid)
             })
     }, [formValues])
-
+    const newUser = {
+        fullname: formValues.fullname,
+        username: formValues.username,
+        password: formValues.password,
+    }
 
     const onSubmit = (event) => {
         event.preventDefault();
+        console.log(newUser)
         axiosWithAuth()
             .post('/api/auth/register', newUser)
             .then(res => {
@@ -109,14 +111,7 @@ function SignupForm(props) {
                 console.log(err)
             })
 
-        const newUser = {
-            name: formValues.fullname,
-            email: formValues.username,
-            password: formValues.password,
-            password2: formValues.password2,
-            termsOfService: formValues.termsOfService
 
-        }
 
         // postUser(newUser)
         // setFormValues(initialFormValues)

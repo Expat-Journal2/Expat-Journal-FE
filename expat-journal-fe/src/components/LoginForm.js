@@ -8,19 +8,21 @@ import {useHistory} from "react-router-dom"
 
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
+
+const initialState = {
+    username: "",
+    password: ""
+}
+
 function LoginForm(props) {
-    const [username, setUserName, handleUserName] = useInput("")
-    const [password, setPassword, handlePassword] = useInput("")
+const [user, setUser] = useState({})
     const {push} = useHistory();
-    const currUser = {
-        username:username,
-        password:password
-    }
+  
 
     const submitLogin = (event) => {
         event.preventDefault();
         axiosWithAuth()
-            .post('/api/auth/login', currUser)
+            .post('/api/auth/login', user)
             .then(res => {
                 console.log(res.data)
                 localStorage.setItem('token', res.data.token)
@@ -31,22 +33,27 @@ function LoginForm(props) {
             })
     }
 
+    const handleChange = event => {
+        setUser({...user, 
+            [event.target.name]: event.target.value})   
+    }
+
     return (
         <form>
             <h2>Log In</h2>
             {/* ////////// TEXT INPUTS ////////// */}
             <label>Username:&nbsp;
                 <input
-                    value={username}
-                    onChange={e=> handleUserName(e.target.value)}
-                    name='name'
+                    value={user.username}
+                    onChange={handleChange}
+                    name='username'
                     type='text'
                 />
             </label>
             <label>Password:&nbsp;
       <input
-                    value={password}
-                    onChange={e=> handlePassword(e.target.value)}
+                    value={user.password}
+                    onChange={handleChange}
 
                     name='password'
                     type='password'
