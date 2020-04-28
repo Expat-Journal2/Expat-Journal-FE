@@ -1,12 +1,10 @@
-
-import { connect } from "react-redux"
-import axios from "axios";
-import { axiosWithAuth } from "../utils/axiosWithAuth"
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import formValidation from "../utils/validation"
+import {formValidation} from "../utils/validation"
 import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
+import {AddNewPost} from "../store/actions"
+import {connect, useDispatch} from "react-redux"
 
 
 const Form = styled.form
@@ -60,7 +58,7 @@ const initialFormErrors = {
 
 function AddPost(props) {
     const { push } = useHistory()
-
+    const dispatch = useDispatch()
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -68,44 +66,19 @@ function AddPost(props) {
 
 
     useEffect(() => {
-
         formValidation.isValid(formValues)
             .then(valid => { // either true or false
                 setFormDisabled(!valid)
             })
     }, [formValues])
-    // const newPost = {
-    //     title: formValues.title,
-    //     caption: formValues.textbox,
-    //     created_at: formValues.created_at,
-    // }
-
-    // const onSubmit = (event) => {
-    //     event.preventDefault();
-    //     console.log(newPost)
-    //     axiosWithAuth()
-    //         .post('/api/auth/register', newPost)
-    //         .then(res => {
-    //             console.log(`submitted reg response`, res.data)
-    //             push('/login')
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
-
 
     const onInputChange = evt => {
-
         const name = evt.target.name
         const value = evt.target.value
-
-
         yup
             .reach(formValidation, name)
             .validate(value)
             .then(valid => {
-
                 setFormErrors({
                     ...formErrors,
                     [name]: formValues.name,
@@ -118,21 +91,23 @@ function AddPost(props) {
                     [name]: err.message
                 })
             })
-
-
         setFormValues({
             ...formValues,
             [name]: value,
         })
     }
-
+    const newPost = {
+        title: formValues.title,
+        caption: formValues.textbox,
+        created_at: formValues.created_at,
+    }
 
 
     return (
-        <Form /* onSubmit={onSubmit} */>
+        <Form onSubmit={()=>{
+            dispatch(AddNewPost(newPost))
+        }}>
             <h2>Add Post</h2>
-
-
             <Label>Post Title:&nbsp;
                 <Input
                     value={formValues.title}
@@ -170,7 +145,7 @@ function AddPost(props) {
 
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
-            {<Button /*onClick={onSubmit}*/ disabled={formDisabled}>Add New Post</Button>}
+            {<Button /*onClick={onSubmit}*/ disabled={!formDisabled}>Add New Post</Button>}
 
         </Form >
     )
@@ -178,11 +153,13 @@ function AddPost(props) {
 
 
 const mapStateToProps = state => {
+    console.log(`add post`, state)
     return {
-        isDisabled: state.formReducer.isDisabled,
+isLoading: state.postReducer.isLoading,
+blogs: state.postReducer.blogs
     }
 }
 export default connect(
     mapStateToProps,
-    {},
+    {AddNewPost},
 )(AddPost)

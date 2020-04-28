@@ -6,7 +6,7 @@ import * as yup from 'yup'
 
 ///SIGNUP AND LOGIN VALIDATIONS
 
-const formValidation = yup.object().shape({
+export const formValidation = yup.object().shape({
     fullname: yup
         .string()
         .required('Name is required!'),
@@ -52,5 +52,5 @@ const formValidation = yup.object().shape({
 
 })
 
-export default formValidation
+
 
