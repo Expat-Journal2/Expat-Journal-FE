@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { useInput } from "../hooks/useInput";
 import formValidation from "../utils/validation"
 import * as yup from 'yup'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 
 
@@ -62,28 +62,17 @@ const initialFormErrors = {
 
 
 function SignupForm(props) {
-    const {push} = useHistory()
+    const { push } = useHistory()
 
 
-    const [checked,setChecked] = useState(false);
+    const [checked, setChecked] = useState(false);
 
-    function handleChecked() {
-        checked ? setChecked(false) : setChecked(true);
-    }
+
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
     const [formDisabled, setFormDisabled] = useState(true)
 
-
-    // const verifyPasswordValidator = (password.value, verifyPassword.value) => {
-    //     if (verifyPassword.value === password.value)        }
-    // }
-    // const newUser = {
-    //     fullname: formValues.fullname,
-    //     username: username,
-    //     password: password
-    // }
 
     useEffect(() => {
 
@@ -112,9 +101,6 @@ function SignupForm(props) {
             })
 
 
-
-        // postUser(newUser)
-        // setFormValues(initialFormValues)
     }
 
 
@@ -158,8 +144,7 @@ function SignupForm(props) {
             .reach(formValidation, name)
             .validate(isChecked)
             .then(valid => {
-                //happy path
-                //CLEAR ERROR
+
                 setFormErrors({
                     ...formErrors,
                     [name]: "",
@@ -231,7 +216,6 @@ function SignupForm(props) {
             </Label>
             {formErrors.password2}
 
-            {/* ////////// CHECKBOX////////// */}
             <Label>
                 <Input
                     checked={formValues.checked}
@@ -245,7 +229,7 @@ function SignupForm(props) {
 
             {formErrors.termsOfService}
 
-            {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
+            {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
             <Button onClick={onSubmit} disabled={formDisabled}>Sign Up!</Button>
 
