@@ -33,7 +33,6 @@ const [user, setUser] = useState({})
                 console.log(err.data.message)
                 const error = err.data.message
             })
-            return error
     }
 
     const handleChange = event => {
@@ -61,9 +60,7 @@ const [user, setUser] = useState({})
                     name='password'
                     type='password'
                 /></label>
-                // {if({error}){
-                //     <div>{error}</div>
-                // }}
+               
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
             <button 
             onClick={submitLogin} 
