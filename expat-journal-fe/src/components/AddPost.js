@@ -149,7 +149,7 @@ function AddPost(props) {
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
 
-            {<Button /*onClick={onSubmit}disabled={!formDisabled }*/ >Add New Post</Button>}
+            {<Button /*onClick={onSubmit} disabled={!formDisabled}*/ >Add New Post</Button>}
 
 
         </Form >
