@@ -10,7 +10,8 @@ const mapStateToProps = state => {
     return {
         id: state.postReduceer.userid,
         fullname: state.postReducer.fullname,
-        username: state.postReducer.username
+        username: state.postReducer.username,
+        blogs:state.postReducer.blogs
     }
 }
 export default connect(
