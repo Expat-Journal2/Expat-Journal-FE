@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 import { Login } from "../store/actions";
 import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
+import {useHistory} from "react-router-dom"
+
 
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
 function LoginForm(props) {
     const [username, setUserName, handleUserName] = useInput("")
     const [password, setPassword, handlePassword] = useInput("")
-
+    const {push} = useHistory();
     const currUser = {
         username:username,
         password:password
@@ -20,7 +22,9 @@ function LoginForm(props) {
         axiosWithAuth()
             .post('/api/auth/login', currUser)
             .then(res => {
-                console.log(res)
+                console.log(res.data)
+                localStorage.setItem('token', res.data.token)
+                push("/dashboard")
             })
             .catch(err => {
                 console.log(err)

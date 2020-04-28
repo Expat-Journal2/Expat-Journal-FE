@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import {Link, useHistory} from "react-router-dom"
 import {LogOut} from "../store/actions"
 
-function Header(){
+function Header(props){
 
     const {push} = useHistory()
 
