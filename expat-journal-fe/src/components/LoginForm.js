@@ -44,8 +44,10 @@ function LoginForm(props) {
                 push("/dashboard")
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.data.message)
+                const error = err.data.message
             })
+            return error
     }
 
     const handleChange = event => {
@@ -102,6 +104,7 @@ function LoginForm(props) {
                     name='password'
                     type='password'
                 /></label>
+
             <div>
                 {formErrors.password}
             </div>
