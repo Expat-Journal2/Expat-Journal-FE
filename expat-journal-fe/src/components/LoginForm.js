@@ -3,9 +3,30 @@ import { connect } from "react-redux";
 import { Login } from "../store/actions";
 import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
+
+import { axiosWithAuth } from "../utils/axiosWithAuth"
+
 function LoginForm(props) {
     const [username, setUserName, handleUserName] = useInput("")
     const [password, setPassword, handlePassword] = useInput("")
+
+    const currUser = {
+        username:username,
+        password:password
+    }
+
+    const submitLogin = (event) => {
+        event.preventDefault();
+        axiosWithAuth()
+            .post('/api/auth/login', currUser)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     return (
         <form>
             <h2>Log In</h2>
@@ -13,7 +34,10 @@ function LoginForm(props) {
             <label>Username:&nbsp;
                 <input
                     value={username}
-                    onChange={e => {handleUserName(e.target.value)}}
+
+   
+                    onChange={e=> handleUserName(e.target.value)}
+
                     name='name'
                     type='text'
                 />
@@ -21,12 +45,16 @@ function LoginForm(props) {
             <label>Password:&nbsp;
       <input
                     value={password}
-                    onChange={e => {handlePassword(e.target.value)}}
+
+                    onChange={e=> handlePassword(e.target.value)}
+
                     name='password'
                     type='password'
                 /></label>
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
-            <button //onClick={onSubmit} disabled={disabled}
+            <button 
+            onClick={submitLogin} 
+            //disabled={disabled}
             >Log In</button>
         </form >
     )
