@@ -13,17 +13,19 @@ useEffect(()=>{
     dispatch(fetchAllPosts())
     setBlogs(props.blogs)
     console.log("Blogs, inside useeffect:",blogs)
-},[setBlogs])
+},[])
 console.log("Blogs, outside useeffect:",blogs)
 console.log("allPosts state:",props.blogs)
 return(
     <div className="allposts">
-        Hello
+        
         {blogs.map(blog => {
             console.log(blog)
             return (
             <>
             <h3>{blog.title}</h3>
+            <p>{blog.textbox}</p>
+            <img src={blog.img}/>
             </>
             )
 })}
