@@ -3,8 +3,8 @@ import * as yup from 'yup'
 
 ///FORM VALIDATION 
 
-const FormValidation = yup.object().shape({
-    name: yup
+const formValidation = yup.object().shape({
+    fullname: yup
         .string()
         .required('Name is required!'),
     username: yup
@@ -12,7 +12,20 @@ const FormValidation = yup.object().shape({
         .required('Username is required!'),
     password: yup
         .string()
-        .required('Password is required!'),
+        .required('Password is required'),
+
+    password2:
+        yup.string()
+            .required('Password confirm is required')
+            .when("password", {
+                is: value => value && value.length > 0,
+
+                then: yup
+                    .string()
+                    .oneOf([yup.ref("password")], "Both passwords need to be the same")
+
+            }),
+
     termsOfService: yup
         .boolean()
         .required("You must agree!!")
@@ -21,4 +34,5 @@ const FormValidation = yup.object().shape({
 
 })
 
-export default FormValidation
+export default formValidation
+
