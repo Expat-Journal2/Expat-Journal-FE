@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import { useInput } from "../hooks/useInput";
 import formValidation from "../utils/validation"
 import * as yup from 'yup'
+import {useHistory} from 'react-router-dom'
+
 
 
 const Form = styled.form
@@ -60,13 +62,17 @@ const initialFormErrors = {
 
 
 function SignupForm(props) {
-
+    const {push} = useHistory()
 
     const [fullname, setFullName, handleFullName] = useInput("");
     const [username, setUserName, handleUserName] = useInput("");
     const [password, setPassword, handlePassword] = useInput("");
     const [password2, setPassword2, handlePassword2] = useInput("")
-    const [checked, setChecked, handleChecked] = useInput(false);
+    const [checked,setChecked] = useState(false);
+
+    function handleChecked() {
+        checked ? setChecked(false) : setChecked(true);
+    }
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -96,7 +102,8 @@ function SignupForm(props) {
         axiosWithAuth()
             .post('/api/auth/register', newUser)
             .then(res => {
-                console.log(res)
+                console.log(`submitted reg response`, res.data)
+                push('/login')
             })
             .catch(err => {
                 console.log(err)
@@ -196,8 +203,10 @@ function SignupForm(props) {
 
             <Label>Username:&nbsp;
                 <Input
+
                     value={formValues.username}
                     onChange={onInputChange}
+
                     name='username'
                     type='text'
                 />
@@ -207,6 +216,7 @@ function SignupForm(props) {
 
             <Label>Password:&nbsp;
                 <Input
+
                     value={formValues.password}
                     onChange={onInputChange}
                     name='password'
@@ -217,6 +227,7 @@ function SignupForm(props) {
 
             <Label>Verify Password:&nbsp;
                 <Input
+
                     value={formValues.password2}
                     onChange={onInputChange}
                     name='password2'
@@ -230,6 +241,7 @@ function SignupForm(props) {
                 <Input
                     checked={formValues.checked}
                     onChange={onCheckboxChange}
+
                     name='termsOfService'
                     type="checkbox"
                 />
@@ -239,7 +251,9 @@ function SignupForm(props) {
             {formErrors.termsOfService}
 
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
+
             <Button onClick={onSubmit} disabled={formDisabled}>Sign Up!</Button>
+
         </Form >
     )
 }
