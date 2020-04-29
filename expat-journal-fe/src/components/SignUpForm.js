@@ -91,15 +91,14 @@ function SignupForm(props) {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(newUser)
+
         axiosWithAuth()
             .post('/api/auth/register', newUser)
             .then(res => {
-                console.log(`submitted reg response`, res.data)
                 push('/login')
             })
             .catch(err => {
-                console.log(err)
+                alert(err)
             })
 
 

@@ -32,22 +32,20 @@ function Dashboard (props){
         axiosWithAuth()
         .delete(`/api/users/${localStorage.getItem('userId')}/blogs/${id}`)
         .then(res => {
-            console.log(res)
+   
             history.push("/dashboard")
             history.go(0)
             })
-        .catch(err => console.log(err))    
+        .catch(err => alert(err))    
     }
 
     function handleUpdate(blog) {
-        console.log(blog)
         setBlogToEdit(blog)
-        console.log("edit toggle",modal)
         toggle()
         
     }
 
-console.log("dashboard props",props)
+
     return(
         <div className="dashboard">
             <Header />
@@ -73,7 +71,6 @@ console.log("dashboard props",props)
     )
 }
 const mapStateToProps = state => {
-    console.log("props", state)
     return {
         username: state.postReducer.username,
         id: state.postReducer.id,

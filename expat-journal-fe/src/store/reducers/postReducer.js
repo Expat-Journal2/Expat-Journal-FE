@@ -5,8 +5,10 @@ const initialState = {
     isLoggedIn: false,
     isLoading: false,
     error: "",
-    blogs:[]
+    blogs:[],
+    post:{}
 }
+
 
 
 export const postReducer = (state = initialState, action)=>{

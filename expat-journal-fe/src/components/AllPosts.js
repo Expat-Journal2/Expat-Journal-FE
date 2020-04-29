@@ -15,15 +15,15 @@ useEffect(()=>{
 props.fetchAllPosts()
 },[])
 
-console.log("allPosts state:",props.blogs)
+
 
 if (!props.blogs){
-    console.log("isloading props",props)
+
     return(
         <div>Loading...</div>
     )
 } else {
-    console.log("loaded props",props)
+
     return(
     <>
         <Header/>
@@ -45,7 +45,7 @@ if (!props.blogs){
 
 
 const mapStateToProps = state => {
-    console.log("mapstatetoprops",state.postReducer)
+
     return {
         blogs: state.postReducer.blogs
     }

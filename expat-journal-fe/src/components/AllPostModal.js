@@ -5,7 +5,7 @@ function TextModal (props){
     const {buttonLabel, className} = props;
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
-console.log("textmodal",props.blog)
+
     return(
         <div className="textModal">
             <Button color="danger" onClick={toggle}>Read About This Photo</Button>

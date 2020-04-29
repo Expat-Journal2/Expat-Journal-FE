@@ -63,7 +63,6 @@ function AddPost(props) {
     const { push } = useHistory()
     const dispatch = useDispatch()
 
-    console.log(props)
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -191,7 +190,7 @@ function AddPost(props) {
 
 
 const mapStateToProps = state => {
-    console.log(`add post`, state)
+
     return {
 isLoading: state.postReducer.isLoading,
 blogs: state.postReducer.blogs
