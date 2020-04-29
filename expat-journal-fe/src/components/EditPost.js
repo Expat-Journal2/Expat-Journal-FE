@@ -8,6 +8,7 @@ import {connect, useDispatch} from "react-redux"
 
 
 import { Modal} from 'reactstrap';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 const Form = styled.form
@@ -50,12 +51,13 @@ width: 30%;
 
 
 function EditPost(props) {
-
+    const history = useHistory()
+    console.log("title:", props.blogToEdit.title)
     const initialFormValues = {
-        title: props.title,
-        textbox: props.textbox,
-        created_at: props.created_at,
-        img: props.img
+        title: props.blogToEdit.title,
+        textbox: props.blogToEdit.textbox,
+        created_at: props.blogToEdit.created_at,
+        img: props.blogToEdit.img
     }
     
     const initialFormErrors = {
@@ -64,11 +66,18 @@ function EditPost(props) {
         created_at: '',
     }
 
+    useEffect(()=>{
+        setFormValues({
+        title: props.blogToEdit.title,
+        textbox: props.blogToEdit.textbox,
+        created_at: props.blogToEdit.created_at,
+        img: props.blogToEdit.img
+        })
+        
+    },[props.blogToEdit.title])
+    
 
-    const { push } = useHistory()
-    const dispatch = useDispatch()
-
-    console.log(props)
+    console.log("EditPost:",props)
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -114,7 +123,16 @@ function EditPost(props) {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
+        axiosWithAuth()
+        .put(`/api/users/${props.blogToEdit.user_id}/blogs/${props.blogToEdit.id}`,formValues)
+        .then(res => {
 
+            console.log(res)
+            history.push("/dashboard")
+            history.go(0)
+        })
+        .catch(err => console.log(err))
     }
 
 
@@ -124,8 +142,8 @@ function EditPost(props) {
         <Modal isOpen={props.show}>
 
         
-        <Form onSubmit={(e)=>handleSubmit}>
-            <h2>Add Post</h2>
+        <Form onSubmit={(e)=>handleSubmit(e)}>
+            <h2>Edit Post</h2>
             <Label>Post Title:&nbsp;
                 <Input
                     value={formValues.title}
@@ -177,11 +195,9 @@ function EditPost(props) {
 
 
             <Button 
-            onClick={props.toggle} 
-
-            /*onClick={onSubmit} disabled={!formDisabled}*/ 
+                /*onClick={onSubmit} disabled={!formDisabled}*/ 
             >
-                Add New Post
+                Submit Changes
                 </Button>
 
 

@@ -15,6 +15,7 @@ function Dashboard (props){
 
     const [modal, setModal] = useState(false)
     const [blogToEdit, setBlogToEdit] = useState({})
+
     const toggle = () => setModal(!modal)
 
     const history = useHistory();
@@ -40,6 +41,7 @@ function Dashboard (props){
         console.log(blog)
         setBlogToEdit(blog)
         console.log("edit toggle",modal)
+        toggle()
         
     }
 
@@ -62,7 +64,7 @@ console.log("dashboard props",props)
             })}
             </div>
             )}
-            <EditPost props={blogToEdit} show={modal} toggle={toggle}/>
+            <EditPost blogToEdit={blogToEdit} show={modal} toggle={toggle}/>
         </div>
     )
 }
