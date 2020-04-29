@@ -18,11 +18,11 @@ useEffect(()=>{
 console.log("allPosts state:",props.blogs)
 return(
     <div className="allposts">
-        {props.blogs.map(blog => {
+        {blogs.map(blog => {
             console.log(blog)
             return (
             <>
-            <h3>{blog.title}</h3>
+            <h3>{blog.title}</h3>1
             <p>{blog.textbox}</p>
             <img src={blog.img}/>
             </>
