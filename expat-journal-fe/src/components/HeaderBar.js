@@ -7,8 +7,7 @@ import styled from 'styled-components';
 import { Button } from "reactstrap"
 //styled components
 import { Navbar, OtherLinks, MoreLinks, Span } from "../assets/StyledComponents"
-
-import {Button} from "reactstrap"
+import logo from "../images/logoimg.svg"
 
 // Store imports
 import { fetchAllPosts } from "../store/actions"
@@ -37,7 +36,7 @@ function HeaderBar(props) {
 
         <Navbar>
             <OtherLinks>
-                <Link to="/" className="ATag">Foreigner Files</Link>
+                <Link to="/" className="ATag"><img src={logo}/></Link>
                 <Link to="/dashboard" className="ATag">Dashboard</Link>
                 <Link to="/allposts" className="ATag">View All Posts</Link>
                 <Link to="#" className="ATag">About</Link>
