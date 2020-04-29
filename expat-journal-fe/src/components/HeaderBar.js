@@ -1,12 +1,21 @@
+// dependency imports
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
-import { fetchAllPosts } from "../store/actions"
 import styled from 'styled-components';
-import AddPost from "./AddPost"
+
 import { Button } from "reactstrap"
 //styled components
 import { Navbar, OtherLinks, MoreLinks, Span } from "../assets/StyledComponents"
+
+import {Button} from "reactstrap"
+
+// Store imports
+import { fetchAllPosts } from "../store/actions"
+
+// component imports
+import AddPost from "./AddPost"
+
 
 
 function HeaderBar(props) {

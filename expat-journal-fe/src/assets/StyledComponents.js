@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 
+
 /////HeaderBar styled components 
 
 export const Navbar = styled.div`
@@ -14,6 +15,7 @@ margin: 0 auto;
 justify-content: space-around;
 padding: 1% 0;
 `
+
 export const OtherLinks = styled.div`
     display: flex;
     flex-direction: row;
@@ -94,5 +96,5 @@ export const PostButton = styled.button
     `
     margin: 3% auto;
 width: 30%;
-
+width: 70%;
 `

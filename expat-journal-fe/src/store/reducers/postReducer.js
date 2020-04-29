@@ -69,7 +69,8 @@ export const postReducer = (state = initialState, action)=>{
         case "LOG_OUT":
             return {
                 ...state,
-                isLoggedIn: false
+                isLoggedIn: false,
+                blogs: []
             }
         default:
             return state;
