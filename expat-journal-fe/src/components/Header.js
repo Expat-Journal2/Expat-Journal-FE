@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {connect, useDispatch} from "react-redux"
 import {Link, useHistory} from "react-router-dom"
 import {fetchAllPosts} from "../store/actions"
-import { Modal } from "reactstrap";
 import AddPost from "./AddPost";
 
 

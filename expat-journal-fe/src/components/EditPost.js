@@ -5,7 +5,7 @@ import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
 import {AddNewPost} from "../store/actions"
 import {connect, useDispatch} from "react-redux"
-import Header from "./Header";
+
 
 import { Modal} from 'reactstrap';
 
@@ -45,21 +45,26 @@ width: 30%;
 
 `
 
-const initialFormValues = {
-    title: '',
-    textbox: '',
-    created_at: '',
-}
-
-const initialFormErrors = {
-    title: '',
-    textbox: '',
-    created_at: '',
-}
 
 
 
-function AddPost(props) {
+
+function EditPost(props) {
+
+    const initialFormValues = {
+        title: props.title,
+        textbox: props.textbox,
+        created_at: props.created_at,
+        img: props.img
+    }
+    
+    const initialFormErrors = {
+        title: '',
+        textbox: '',
+        created_at: '',
+    }
+
+
     const { push } = useHistory()
     const dispatch = useDispatch()
 
@@ -71,10 +76,7 @@ function AddPost(props) {
 
 
     useEffect(() => {
-
-
         addPostValidation.isValid(formValues)
-
             .then(valid => { // either true or false
                 setFormDisabled(!valid)
             })
@@ -111,17 +113,18 @@ function AddPost(props) {
         created_at: formValues.created_at,
     }
 
+    const handleSubmit = (e) => {
+
+    }
+
 
     return (
     <>  
         {/* <Header/> */}
         <Modal isOpen={props.show}>
 
-         
-        <Form onSubmit={(e)=>{
-            
-            dispatch(AddNewPost(newPost))
-        }}>
+        
+        <Form onSubmit={(e)=>handleSubmit}>
             <h2>Add Post</h2>
             <Label>Post Title:&nbsp;
                 <Input
@@ -188,16 +191,16 @@ function AddPost(props) {
     </>
     )
 }
+export default EditPost;
 
-
-const mapStateToProps = state => {
-    console.log(`add post`, state)
-    return {
-isLoading: state.postReducer.isLoading,
-blogs: state.postReducer.blogs
-    }
-}
-export default connect(
-    mapStateToProps,
-    {AddNewPost},
-)(AddPost)
+// const mapStateToProps = state => {
+//     console.log(`add post`, state)
+//     return {
+// isLoading: state.postReducer.isLoading,
+// blogs: state.postReducer.blogs
+//     }
+// }
+// export default connect(
+//     mapStateToProps,
+//     {AddNewPost},
+// )(EditPost)

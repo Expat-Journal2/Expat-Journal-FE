@@ -61,3 +61,22 @@ export const AddNewPost = post => {
         })
     }
 }
+
+
+//Not working (((((((((((((((())))))))))))))))
+export const editPost = post => {
+    return dispatch => {
+        dispatch({type: "ADD_NEW_POST_START"})
+        axiosWithAuth()
+        .put(`/api/users/${localStorage.getItem('userId')}/blogs`, post)
+        .then(res=> {
+            console.log(`response from addnew post`, res)
+            dispatch({type: "ADD_NEW_POST_SUCCESSFUL"})
+        })
+        .catch(err=> {
+            console.log(`error from addnew`, err)
+            dispatch({type: "ADD_NEW_POST_FAILURE", payload:err})
+        })
+    }
+}
+//Not working (((((((((((((((())))))))))))))))
