@@ -29,17 +29,31 @@ justify-content: center;
 }
 .post-hero{
   margin:2%;
+  padding:2%;
+  background-color: darkgrey;
+  border-radius: 15px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .buttons{
   margin-top:1%;
   display:flex;
   justify-content: space-evenly;
 }
+.buttons2{
+  margin-top:1%;
 
+}
 .postsContainer{
   display:flex;
   flex-wrap:wrap;
   margin: 2%;
   justify-content: center;
+}
+
+img{
+  border-radius: 15px;
 }
 

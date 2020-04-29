@@ -56,9 +56,9 @@ function Dashboard (props){
                 <h4>{blog.title}</h4>
                     <img width="300px" src={blog.img} />
                     <div className="buttons">
-                    <PBlogModal handleUpdate={handleUpdate} handleDelete={handleDelete} blog={blog} />
-                    <Button onClick={e => handleUpdate(blog)}>Update</Button>
-                    <Button color="danger" onClick={e => handleDelete(blog.id)}>Delete</Button>
+                        <PBlogModal handleUpdate={handleUpdate} handleDelete={handleDelete} blog={blog} />
+                        <Button onClick={e => handleUpdate(blog)}>Update</Button>
+                        <Button color="danger" onClick={e => handleDelete(blog.id)}>Delete</Button>
 
                     
                     </div>
