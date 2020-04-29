@@ -1,27 +1,23 @@
+// dependency imports
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
-import { fetchAllPosts } from "../store/actions"
 import styled from 'styled-components';
-import AddPost from "./AddPost"
 import {Button} from "reactstrap"
 
-const Navbar = styled.div`
-width: 100%;
-height:100px;
-background: rgba(0, 0, 0, 0.4);
-display: flex;
-flex-direction: row;
-margin: 0 auto;
-justify-content: space-around;
-padding: 1% 0;
-`
-const OtherLinks = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-`
+// Store imports
+import { fetchAllPosts } from "../store/actions"
+
+// component imports
+import AddPost from "./AddPost"
+
+//style imports
+import {Navbar, OtherLinks} from "../assets/StyledComponents"
+
+
+
+
+
 const MoreLinks = styled.div`
 display: flex;
 flex-direction: row;
