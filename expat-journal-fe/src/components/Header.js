@@ -21,11 +21,7 @@ const LogOut = event => {
             <h1>Foreigner Files</h1>
             <nav className="headerNav">
                 <Link to="/dashboard"><button>Dashboard</button></Link>
-                <button onClick={
-                    ()=>{
-                        dispatch(fetchAllPosts())
-                    }
-                }>All Posts</button>
+                <Link to="/allposts"><button>All Posts</button></Link>
                 <button onClick={LogOut}>Log Out</button>
             </nav>
         </div>

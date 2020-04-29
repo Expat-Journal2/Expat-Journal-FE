@@ -13,12 +13,24 @@ useEffect(()=>{
     dispatch(fetchUserInfo())
     dispatch(fetchUserBlogs())
 },[localStorage.getItem('userId')])
-
+console.log("dashboard props",props)
     return(
         <div className="dashboard">
             <Header />
             <AddPost />
-            <AllPosts/>
+            {props.blogs && (
+            <div className="postsContainer">
+                {props.blogs.map(blog => {
+                return (
+                <div key={blog.id} className="post-hero">
+                    <h3>{blog.title}</h3>
+                    <p>{blog.textbox}</p>
+                    <img src={blog.img} />.
+                </div>
+                )
+            })}
+            </div>
+            )}
         </div>
     )
 }
@@ -27,7 +39,8 @@ const mapStateToProps = state => {
     return {
         username: state.postReducer.username,
         id: state.postReducer.id,
-        fullname: state.postReducer.fullname
+        fullname: state.postReducer.fullname,
+        blogs: state.postReducer.blogs
     }
 }
 

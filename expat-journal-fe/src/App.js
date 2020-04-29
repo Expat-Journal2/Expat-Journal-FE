@@ -8,6 +8,7 @@ import LoggedOut from "./components/LoggedOut"
 import Home from "./components/Home"
 import './App.css';
 import Dashboard from './components/Dashboard';
+import AllPosts from './components/AllPosts';
 
 
 
@@ -25,6 +26,8 @@ function App() {
         <Route exact path="/"><Home /></Route>
         <Route exact path="/register"><SignUpForm /></Route>
         <Route exact path="/login"><LoginForm /></Route>
+        <Route exact path="/allposts"><AllPosts /></Route>
+        
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <Route path="/loggedout"><LoggedOut /></Route>
       </Switch>
