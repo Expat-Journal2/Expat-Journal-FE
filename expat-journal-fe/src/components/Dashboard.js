@@ -5,10 +5,14 @@ import {connect, useDispatch} from "react-redux";
 import AddPost from "./AddPost"
 import AllPosts from "./AllPosts";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 
 
 function Dashboard (props){
+
+    const history = useHistory();
+
     const dispatch = useDispatch();
 useEffect(()=>{
     dispatch(fetchUserInfo())
@@ -20,6 +24,12 @@ const handleDelete = (id) =>  {
     .delete(`/api/users/${props.id}/blogs/${id}`)
     .then(res => console.log(res))
     .catch(err => console.log(err))
+    
+    setTimeout((() => {
+        history.push("/dashboard")
+        history.go(0)
+    }),1000)
+    
 }
 function handleUpdate(id) {
     console.log(id)

@@ -119,7 +119,7 @@ function AddPost(props) {
 
         
         <Form onSubmit={(e)=>{
-            e.preventDefault();
+            
             dispatch(AddNewPost(newPost))
         }}>
             <h2>Add Post</h2>
@@ -173,7 +173,13 @@ function AddPost(props) {
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
 
-            {<Button /*onClick={onSubmit} disabled={!formDisabled}*/ >Add New Post</Button>}
+            <Button 
+            onClick={props.toggle} 
+
+            /*onClick={onSubmit} disabled={!formDisabled}*/ 
+            >
+                Add New Post
+                </Button>
 
 
         </Form >
