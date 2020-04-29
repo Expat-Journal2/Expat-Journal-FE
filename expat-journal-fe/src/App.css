@@ -1,14 +1,28 @@
 html{
+  background-image: url("./images/khachik-simonian-nXOB-wh4Oyc-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
   background-color: #d4d4d4;
+}
+body {
+  background-color: rgba(201, 76, 76, 0.0);
 }
 
 .App {
   text-align: center;
-  background-color: #d4d4d4;
+  background-color: transparent;
   height: 100%;
-
+  
 }
 
+.home {
+  background-color: rgba(201, 76, 76, 0.0);
+  height: 100%;
+  
+
+}
 a {
   font-family: 'Roboto', sans-serif;
 
