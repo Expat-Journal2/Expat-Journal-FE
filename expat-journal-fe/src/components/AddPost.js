@@ -6,44 +6,11 @@ import { useHistory } from 'react-router-dom'
 import { AddNewPost } from "../store/actions"
 import { connect, useDispatch } from "react-redux"
 import Header from "./Header";
-
 import { Modal, Button, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
+//styled components
+import { PostForm, PostLabel, PostTextBox, PostInput, PostButton } from "../assets/StyledComponents"
 
 
-const Form = styled.form
-    `
-        display: flex;
-        flex-direction: column;
-        background-color: lightblue;
-        width: 90%;
-        margin: 3% auto;
-        padding: 2% 0; 
-        `
-
-const Label = styled.label
-    `
-        justify-content: flex-end;
-        `
-
-const TextBox = styled.input
-    `
-        margin-top: 3%;
-        height: 100px;
-        width: 50%;
-        
-        `
-
-const Input = styled.input
-    `
-        margin-top: 3%;
-        `
-
-const StyledButton = styled.button
-    `
-    margin: 3% auto;
-width: 30%;
-
-`
 
 const initialFormValues = {
     title: '',
@@ -56,7 +23,6 @@ const initialFormErrors = {
     textbox: '',
     created_at: '',
 }
-
 
 
 function AddPost(props) {
@@ -117,24 +83,24 @@ function AddPost(props) {
             <Modal isOpen={props.show}>
                 <ModalHeader>Add Post</ModalHeader>
 
-                <Form onSubmit={(e) => {
+                <PostForm onSubmit={(e) => {
 
                     dispatch(AddNewPost(newPost))
                 }}>
 
-                    <Label>Post Title:&nbsp;
-                <Input
+                    <PostLabel>Post Title:&nbsp;
+                <PostInput
                             value={formValues.title}
                             onChange={onInputChange}
                             name='title'
                             type='text'
                         />
-                    </Label>
+                    </PostLabel>
 
                     {formErrors.title}
 
-                    <Label>Caption: &nbsp;
-                <TextBox
+                    <PostLabel>Caption: &nbsp;
+                <PostTextBox
 
                             value={formValues.textbox}
                             onChange={onInputChange}
@@ -142,11 +108,11 @@ function AddPost(props) {
                             name='textbox'
                             type='text'
                         />
-                    </Label>
+                    </PostLabel>
                     {formErrors.textbox}
 
-                    <Label>Image URL: &nbsp;
-                <Input
+                    <PostLabel>Image URL: &nbsp;
+                <PostInput
 
                             value={formValues.img}
                             onChange={onInputChange}
@@ -154,11 +120,11 @@ function AddPost(props) {
                             name='img'
                             type='text'
                         />
-                    </Label>
+                    </PostLabel>
                     {formErrors.img}
 
-                    <Label>Date added:&nbsp;
-                <Input
+                    <PostLabel>Date added:&nbsp;
+                <PostInput
 
                             value={formValues.created_at}
                             onChange={onInputChange}
@@ -166,19 +132,19 @@ function AddPost(props) {
                             type='text'
                             placeholder="Ex. Apr 26 2020"
                         />
-                    </Label>
+                    </PostLabel>
                     {formErrors.created_at}
 
                     {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
 
-                    <Button
+                    <PostButton
                         // onClick={props.toggle} 
                         //onClick={onSubmit}
-                        disabled={formDisabled}>Add New Post</Button>
+                        disabled={formDisabled}>Add New Post</PostButton>
 
 
-                </Form >
+                </PostForm >
                 <Button onClick={props.toggle}>Close</Button>
             </Modal>
         </>
