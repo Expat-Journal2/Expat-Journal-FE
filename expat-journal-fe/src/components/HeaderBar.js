@@ -17,17 +17,6 @@ import {Navbar, OtherLinks} from "../assets/StyledComponents"
 
 
 
-const MoreLinks = styled.div`
-display: flex;
-flex-direction: row;
-width: 20%;
-justify-content: space-around;
-`
-const Span = styled.span`
-color: orange;
-align-self:center;
-`
-
 
 
 function HeaderBar(props) {
