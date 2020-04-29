@@ -2,6 +2,7 @@ import React, {useEffect,useState} from "react";
 import Header from "./Header";
 import {connect, useDispatch} from 'react-redux'
 import {fetchAllPosts} from "../store/actions/index"
+import {Spinner} from "reactstrap"
 
 
 function AllPosts(props){
@@ -10,27 +11,26 @@ function AllPosts(props){
 const dispatch=useDispatch()
 
 useEffect(()=>{
-    dispatch(fetchAllPosts())
+props.fetchAllPosts()
     // setBlogs(props.blogs)
     // console.log("Blogs, inside useeffect:",blogs)
 },[])
 // console.log("Blogs, outside useeffect:",blogs)
 console.log("allPosts state:",props.blogs)
+
 return(
-    <div className="allposts">
-        {blogs.map(blog => {
-            console.log(blog)
-            return (
-            <>
-            <h3>{blog.title}</h3>1
-            <p>{blog.textbox}</p>
-            <img src={blog.img}/>
-            </>
-            )
-})}
-    </div>
+    <>
+    {props.isLoading ? (<Spinner />) : (<div>{props.blogs.map((item)=>{
+        return (
+            <div>
+                <p>Hello</p>
+            </div>
+        )
+    })}</div>)}
+    </>
 )
 }
+
 
 const mapStateToProps = state => {
     console.log("mapstatetoprops",state.postReducer)
