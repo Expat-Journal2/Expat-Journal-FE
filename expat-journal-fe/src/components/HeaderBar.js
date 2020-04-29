@@ -17,7 +17,6 @@ import { fetchAllPosts } from "../store/actions"
 import AddPost from "./AddPost"
 
 
-
 function HeaderBar(props) {
 
     const { push } = useHistory();
