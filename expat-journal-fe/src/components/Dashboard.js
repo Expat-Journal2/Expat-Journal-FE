@@ -30,7 +30,7 @@ function Dashboard (props){
 
     const handleDelete = (id) =>  {
         axiosWithAuth()
-        .delete(`/api/users/${props.id}/blogs/${id}`)
+        .delete(`/api/users/${localStorage.getItem('userId')}/blogs/${id}`)
         .then(res => {
             console.log(res)
             history.push("/dashboard")
