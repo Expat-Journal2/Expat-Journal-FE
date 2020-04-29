@@ -6,6 +6,7 @@
   display:flex;
   flex-wrap: wrap;
   margin: 2%;
+  justify-content: center;
 }
 .post-hero{
   margin:2%;
@@ -15,4 +16,5 @@
   display:flex;
   flex-wrap:wrap;
   margin: 2%;
+  justify-content: center;
 }

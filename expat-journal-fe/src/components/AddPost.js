@@ -116,7 +116,7 @@ function AddPost(props) {
     <>  
         {/* <Header/> */}
         <Modal isOpen={props.show}>
-<ModalHeader><h2>Add Post</h2></ModalHeader>
+<ModalHeader>Add Post</ModalHeader>
          
         <Form onSubmit={(e)=>{
             
@@ -174,7 +174,7 @@ function AddPost(props) {
 
 
             <Button 
-            onClick={props.toggle} 
+            // onClick={props.toggle} 
 
             /*onClick={onSubmit} disabled={!formDisabled}*/ 
             >
