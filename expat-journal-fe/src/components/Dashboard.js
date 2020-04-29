@@ -48,17 +48,18 @@ function Dashboard (props){
 
     return(
         <div className="dashboard">
-            <Header />
             {props.blogs && (
             <div className="postsContainer">
                 {props.blogs.map(blog => {
                 return (
                 <div key={blog.id} className="post-hero">
+                <h4>{blog.title}</h4>
                     <img width="300px" src={blog.img} />
                     <div className="buttons">
                     <PBlogModal handleUpdate={handleUpdate} handleDelete={handleDelete} blog={blog} />
-                    <Button color="danger" onClick={e => handleDelete(blog.id)}>Delete</Button>
                     <Button onClick={e => handleUpdate(blog)}>Update</Button>
+                    <Button color="danger" onClick={e => handleDelete(blog.id)}>Delete</Button>
+
                     
                     </div>
                     </div>

@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 import { fetchAllPosts } from "../store/actions"
 import styled from 'styled-components';
-
-
+import AddPost from "./AddPost"
+import {Button} from "reactstrap"
 
 const Navbar = styled.div`
 width: 100%;
@@ -42,28 +42,54 @@ justify-content: center;
 `
 
 
-function HeaderBar() {
+function HeaderBar(props) {
 
+    const {push} = useHistory();
+    const dispatch = useDispatch();
 
-
+    const [modal, setModal] = useState(false)
+    const toggle = () => setModal(!modal)
+        const LogOut = event => {
+        event.preventDefault();
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId')
+        dispatch({type: "LOG_OUT"})
+        push("/loggedout")
+    }
 
 
     return (
 
         <Navbar>
             <OtherLinks>
-                <ATag href="#">Foreigner Files</ATag>
-                <ATag href="#">Home</ATag>
-                <ATag href="#">About</ATag>
-                <ATag href="#">Contact</ATag>
+                <Link to="/" className="ATag">Foreigner Files</Link>
+                <Link to="/dashboard" className="ATag">Dashboard</Link>
+                <Link to="/allposts" className="ATag">View All Posts</Link>
+                <Link to="#" className="ATag">About</Link>
             </OtherLinks>
-            <MoreLinks>
-                <ATag href="#">Signup <Span> | </Span></ATag>
-                <ATag href="#">Login</ATag>
-            </MoreLinks>
+            {!props.isLoggedIn && (            <MoreLinks>
+                <Link to="/register" className="ATag">Signup <Span> | </Span></Link>
+                <Link to="/login"  className="ATag">Login</Link>
+            </MoreLinks>)}
+            {props.isLoggedIn && (<MoreLinks>
+                <Link onClick={toggle}  className="ATag">New Post</Link>
+                <AddPost show={modal} toggle={toggle}/>
+                <Link onClick={LogOut}  className="ATag">Log Out</Link>
+
+                </MoreLinks>)}
+
         </Navbar>
     )
 
 }
-
-export default HeaderBar
+const mapStateToProps = state => {
+    console.log("headerBar", state)
+    return {
+        isLoggedIn: state.postReducer.isLoggedIn,
+        fullname: state.postReducer.fullname
+    }
+}
+export default connect(
+    mapStateToProps,
+    {}
+)(HeaderBar)

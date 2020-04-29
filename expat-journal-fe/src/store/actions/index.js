@@ -24,7 +24,7 @@ export const fetchUserBlogs = () => {
             dispatch({type: "FETCH_DATA_SUCCESS", payload: res})
         })
         .catch(err => {
-            alert(err)
+            alert(`User has no posts, please click "New Post" to get started`,err)
         })
     }
 }
