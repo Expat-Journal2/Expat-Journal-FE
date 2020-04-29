@@ -7,28 +7,40 @@ import {Spinner} from "reactstrap"
 
 function AllPosts(props){
 
-// const [blogs, setBlogs] = useState([])
+
 const dispatch=useDispatch()
 
 useEffect(()=>{
 props.fetchAllPosts()
-    // setBlogs(props.blogs)
-    // console.log("Blogs, inside useeffect:",blogs)
 },[])
-// console.log("Blogs, outside useeffect:",blogs)
+
 console.log("allPosts state:",props.blogs)
 
-return(
+if (!props.blogs){
+    console.log("isloading props",props)
+    return(
+        <div>Loading...</div>
+    )
+} else {
+    console.log("loaded props",props)
+    return(
     <>
-    {props.isLoading ? (<Spinner />) : (<div>{props.blogs.map((item)=>{
-        return (
-            <div>
-                <p>Hello</p>
-            </div>
-        )
-    })}</div>)}
+        <Header/>
+        <div className="posts-container">
+            {props.blogs.map(blog => {
+                return (
+                <div key={blog.id} className="post-hero">
+                    <h3>{blog.title}</h3>
+                    <p>{blog.textbox}</p>
+                    <img src={blog.img} />.
+                </div>
+                )
+            })}
+        </div>
     </>
-)
+)}
+
+
 }
 
 
