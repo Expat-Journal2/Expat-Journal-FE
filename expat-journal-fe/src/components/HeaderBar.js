@@ -35,7 +35,8 @@ function HeaderBar(props) {
                 <Link to="#" className="ATag">About</Link>
             </OtherLinks>
             {!props.isLoggedIn && (<MoreLinks>
-                <Link to="/register" className="ATag">Signup <Span> | </Span></Link>
+                <Link to="/register" className="ATag">Signup </Link>
+                <Span> | </Span>
                 <Link to="/login" className="ATag">Login</Link>
             </MoreLinks>)}
             {props.isLoggedIn && (<MoreLinks>
