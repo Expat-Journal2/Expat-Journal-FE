@@ -5,9 +5,10 @@ import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
 import {AddNewPost} from "../store/actions"
 import {connect, useDispatch} from "react-redux"
-import Header from "./Header";
 
-import { Modal, Button, ModalHeader, ModalFooter, ModalBody} from 'reactstrap';
+
+import { Modal, Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 const Form = styled.form
@@ -45,36 +46,47 @@ width: 30%;
 
 `
 
-const initialFormValues = {
-    title: '',
-    textbox: '',
-    created_at: '',
-}
-
-const initialFormErrors = {
-    title: '',
-    textbox: '',
-    created_at: '',
-}
 
 
 
-function AddPost(props) {
-    const { push } = useHistory()
-    const dispatch = useDispatch()
 
-    console.log(props)
+function EditPost(props) {
+    const history = useHistory()
+    console.log("title:", props.blogToEdit.title)
+    const initialFormValues = {
+        title: props.blogToEdit.title,
+        textbox: props.blogToEdit.textbox,
+        created_at: props.blogToEdit.created_at,
+        img: props.blogToEdit.img
+    }
+    
+    const initialFormErrors = {
+        title: '',
+        textbox: '',
+        created_at: '',
+    }
+
+    useEffect(()=>{
+        setFormValues({
+        title: props.blogToEdit.title,
+        textbox: props.blogToEdit.textbox,
+        created_at: props.blogToEdit.created_at,
+        img: props.blogToEdit.img
+        })
+        
+    },[props.blogToEdit.title])
+    
+
+    console.log("EditPost:",props)
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
     const [formDisabled, setFormDisabled] = useState(true)
 
 
+
     useEffect(() => {
-
-
         addPostValidation.isValid(formValues)
-
             .then(valid => { // either true or false
                 setFormDisabled(!valid)
             })
@@ -111,17 +123,27 @@ function AddPost(props) {
         created_at: formValues.created_at,
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axiosWithAuth()
+        .put(`/api/users/${props.blogToEdit.user_id}/blogs/${props.blogToEdit.id}`,formValues)
+        .then(res => {
+
+            console.log(res)
+            history.push("/dashboard")
+            history.go(0)
+        })
+        .catch(err => console.log(err))
+    }
+
 
     return (
     <>  
         {/* <Header/> */}
         <Modal isOpen={props.show}>
-<ModalHeader>Add Post</ModalHeader>
-         
-        <Form onSubmit={(e)=>{
-            
-            dispatch(AddNewPost(newPost))
-        }}>
+        <ModalHeader ><h2>Edit Post</h2></ModalHeader>
+        <ModalBody>
+        <Form onSubmit={(e)=>handleSubmit(e)}>
 
             <Label>Post Title:&nbsp;
                 <Input
@@ -170,34 +192,34 @@ function AddPost(props) {
             </Label>
             {formErrors.created_at}
 
+
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
 
             <Button 
-            // onClick={props.toggle} 
-
-            /*onClick={onSubmit} disabled={!formDisabled}*/ 
+                /*onClick={onSubmit} disabled={!formDisabled}*/ 
             >
-                Add New Post
+                Submit Changes
                 </Button>
 
 
         </Form >
+        </ModalBody>
         <Button onClick={props.toggle}>Close</Button>
         </Modal>
     </>
     )
 }
+export default EditPost;
 
-
-const mapStateToProps = state => {
-    console.log(`add post`, state)
-    return {
-isLoading: state.postReducer.isLoading,
-blogs: state.postReducer.blogs
-    }
-}
-export default connect(
-    mapStateToProps,
-    {AddNewPost},
-)(AddPost)
+// const mapStateToProps = state => {
+//     console.log(`add post`, state)
+//     return {
+// isLoading: state.postReducer.isLoading,
+// blogs: state.postReducer.blogs
+//     }
+// }
+// export default connect(
+//     mapStateToProps,
+//     {AddNewPost},
+// )(EditPost)
