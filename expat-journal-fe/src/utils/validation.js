@@ -37,10 +37,10 @@ export const formValidation = yup.object().shape({
 })
 
 
+////////ADD POST VALIDATION////////
 
 export const addPostValidation = yup.object().shape({
 
-    ////////ADD POST VALIDATION////////
     title: yup
         .string()
         .required("Please add a title to your post"),
@@ -55,6 +55,10 @@ export const addPostValidation = yup.object().shape({
 
 
 })
+
+
+
+
 
 
 

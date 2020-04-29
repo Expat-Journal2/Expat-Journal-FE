@@ -8,6 +8,7 @@ import LoggedOut from "./components/LoggedOut"
 import Home from "./components/Home"
 import './App.css';
 import Dashboard from './components/Dashboard';
+import HeaderBar from "./components/HeaderBar"
 
 
 
@@ -19,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-
+      <HeaderBar />
 
       <Switch>
         <Route exact path="/"><Home /></Route>
