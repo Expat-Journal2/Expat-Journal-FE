@@ -145,7 +145,7 @@ function AddPost(props) {
                     type='text'
                 />
             </Label>
-            {/* {formErrors.img} */}
+            {formErrors.img}
 
             <Label>Date added:&nbsp;
                 <Input
