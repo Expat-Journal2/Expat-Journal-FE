@@ -8,7 +8,7 @@ function TextModal (props){
 
     return(
         <div className="textModal">
-            <Button color="danger" onClick={toggle}>Read About This Photo</Button>
+            <Button color="danger" onClick={toggle} className="buttons2">Read About This Photo</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader toggle={toggle}>{props.blog.title}:&nbsp;{props.blog.created_at}</ModalHeader>
             <ModalBody>
