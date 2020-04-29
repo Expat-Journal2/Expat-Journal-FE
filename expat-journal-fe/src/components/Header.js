@@ -22,6 +22,7 @@ const LogOut = event => {
             <nav className="headerNav">
                 <Link to="/dashboard"><button>Dashboard</button></Link>
                 <Link to="/allposts"><button>All Posts</button></Link>
+                <Link to="/addpost"><button>New Post</button></Link>
                 <button onClick={LogOut}>Log Out</button>
             </nav>
         </div>

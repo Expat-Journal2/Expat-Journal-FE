@@ -24,6 +24,8 @@ if (!props.blogs){
 } else {
     console.log("loaded props",props)
     return(
+    <>
+        <Header/>
         <div className="posts-container">
             {props.blogs.map(blog => {
                 return (
@@ -35,6 +37,7 @@ if (!props.blogs){
                 )
             })}
         </div>
+    </>
 )}
 
 

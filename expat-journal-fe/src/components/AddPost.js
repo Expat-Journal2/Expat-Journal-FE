@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
 import {AddNewPost} from "../store/actions"
 import {connect, useDispatch} from "react-redux"
+import Header from "./Header";
 
 
 const Form = styled.form
@@ -108,7 +109,10 @@ function AddPost(props) {
 
 
     return (
-        <Form onSubmit={()=>{
+    <>  
+        <Header/>
+        <Form onSubmit={(e)=>{
+            e.preventDefault();
             dispatch(AddNewPost(newPost))
         }}>
             <h2>Add Post</h2>
@@ -166,6 +170,7 @@ function AddPost(props) {
 
 
         </Form >
+    </>
     )
 }
 
