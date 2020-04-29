@@ -102,6 +102,7 @@ function AddPost(props) {
     const newPost = {
         title: formValues.title,
         textbox: formValues.textbox,
+        img: formValues.img,
         created_at: formValues.created_at,
     }
 
@@ -123,7 +124,7 @@ function AddPost(props) {
             {formErrors.title}
 
             <Label>Caption: &nbsp;
-                <TextBox
+                <TextBox 
 
                     value={formValues.textbox}
                     onChange={onInputChange}
@@ -133,6 +134,18 @@ function AddPost(props) {
                 />
             </Label>
             {formErrors.textbox}
+
+            <Label>Image URL: &nbsp;
+                <Input
+
+                    value={formValues.img}
+                    onChange={onInputChange}
+
+                    name='img'
+                    type='text'
+                />
+            </Label>
+            {/* {formErrors.img} */}
 
             <Label>Date added:&nbsp;
                 <Input
