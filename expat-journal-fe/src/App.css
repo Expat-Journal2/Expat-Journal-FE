@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+a {
+  font-family: 'Roboto', sans-serif;
+}
+
+
 .posts-container{
   display:flex;
   flex-wrap: wrap;
@@ -18,3 +23,4 @@
   margin: 2%;
   justify-content: center;
 }
+
