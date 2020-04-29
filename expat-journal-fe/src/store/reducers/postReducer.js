@@ -43,7 +43,7 @@ export const postReducer = (state = initialState, action)=>{
         case "FETCH_ALL_POSTS_SUCCESS":
             return {
                 ...state,
-                blogs:action.payload,
+                blogs: action.payload,
                 isLoading:false
             }
         case "ADD_NEW_POST_START":
