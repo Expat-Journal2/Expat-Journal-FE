@@ -8,6 +8,7 @@ import {Button} from "reactstrap"
 
 const Navbar = styled.div`
 width: 100%;
+height:100px;
 background: rgba(0, 0, 0, 0.4);
 display: flex;
 flex-direction: row;
@@ -19,16 +20,17 @@ const OtherLinks = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-width: 70%;
+    width: 100%;
 `
 const MoreLinks = styled.div`
 display: flex;
 flex-direction: row;
-width: 10%;
+width: 20%;
 justify-content: space-around;
 `
 const Span = styled.span`
 color: orange;
+align-self:center;
 `
 
 
@@ -59,7 +61,8 @@ function HeaderBar(props) {
                 <Link to="#" className="ATag">About</Link>
             </OtherLinks>
             {!props.isLoggedIn && (            <MoreLinks>
-                <Link to="/register" className="ATag">Signup <Span> | </Span></Link>
+                <Link to="/register" className="ATag">Signup </Link>
+                <Span> | </Span>
                 <Link to="/login"  className="ATag">Login</Link>
             </MoreLinks>)}
             {props.isLoggedIn && (<MoreLinks>
