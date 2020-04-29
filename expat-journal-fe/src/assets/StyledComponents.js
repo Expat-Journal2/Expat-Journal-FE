@@ -30,3 +30,69 @@ export const Span = styled.span`
 color: orange;
 align-self:center;
 `
+
+
+////SIGNUP FORM STYLED COMPONENTS
+
+export const Form = styled.form
+    `
+        display: flex;
+        flex-direction: column;
+        background-color: lightgrey;
+        width: 50%;
+        margin: 3% auto;
+        padding: 2% 0; 
+        `
+
+export const Label = styled.label
+    `
+        justify-content: flex-end;
+        `
+
+export const Input = styled.input
+    `
+        margin-top: 3%;
+        `
+
+export const Button = styled.button
+    `
+    margin: 3% auto;
+width: 30%;
+
+`
+
+//////ADD POST FORM
+
+export const PostForm = styled.form
+    `
+        display: flex;
+        flex-direction: column;
+        background-color: lightblue;
+        width: 90%;
+        margin: 3% auto;
+        padding: 2% 0; 
+        `
+
+export const PostLabel = styled.label
+    `
+        justify-content: flex-end;
+        `
+
+export const PostTextBox = styled.textarea
+    `
+        margin-top: 3%;
+        width: 50%;
+        
+        `
+
+export const PostInput = styled.input
+    `
+        margin-top: 3%;
+        `
+
+export const PostButton = styled.button
+    `
+    margin: 3% auto;
+width: 30%;
+
+`
