@@ -6,20 +6,19 @@ import {fetchAllPosts} from "../store/actions/index"
 
 function AllPosts(props){
 
-const [blogs, setBlogs] = useState([])
+// const [blogs, setBlogs] = useState([])
 const dispatch=useDispatch()
 
 useEffect(()=>{
     dispatch(fetchAllPosts())
-    setBlogs(props.blogs)
-    console.log("Blogs, inside useeffect:",blogs)
+    // setBlogs(props.blogs)
+    // console.log("Blogs, inside useeffect:",blogs)
 },[])
-console.log("Blogs, outside useeffect:",blogs)
+// console.log("Blogs, outside useeffect:",blogs)
 console.log("allPosts state:",props.blogs)
 return(
     <div className="allposts">
-        
-        {blogs.map(blog => {
+        {props.blogs.map(blog => {
             console.log(blog)
             return (
             <>
@@ -34,6 +33,7 @@ return(
 }
 
 const mapStateToProps = state => {
+    console.log("mapstatetoprops",state.postReducer)
     return {
         blogs: state.postReducer.blogs
     }
