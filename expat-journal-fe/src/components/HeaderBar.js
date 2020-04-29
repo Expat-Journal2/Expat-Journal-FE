@@ -8,7 +8,7 @@ import {Button} from "reactstrap"
 
 const Navbar = styled.div`
 width: 100%;
-background: rgba(0, 0, 0, 0.6);
+background: rgba(0, 0, 0, 0.4);
 display: flex;
 flex-direction: row;
 margin: 0 auto;
