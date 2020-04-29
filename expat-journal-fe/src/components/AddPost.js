@@ -7,13 +7,15 @@ import {AddNewPost} from "../store/actions"
 import {connect, useDispatch} from "react-redux"
 import Header from "./Header";
 
+import { Modal} from 'reactstrap';
+
 
 const Form = styled.form
     `
         display: flex;
         flex-direction: column;
         background-color: lightblue;
-        width: 50%;
+        width: 90%;
         margin: 3% auto;
         padding: 2% 0; 
         `
@@ -60,6 +62,8 @@ const initialFormErrors = {
 function AddPost(props) {
     const { push } = useHistory()
     const dispatch = useDispatch()
+
+    console.log(props)
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -110,7 +114,10 @@ function AddPost(props) {
 
     return (
     <>  
-        <Header/>
+        {/* <Header/> */}
+        <Modal isOpen={props.show}>
+
+        
         <Form onSubmit={(e)=>{
             e.preventDefault();
             dispatch(AddNewPost(newPost))
@@ -170,6 +177,8 @@ function AddPost(props) {
 
 
         </Form >
+        <Button onClick={props.toggle}>Close</Button>
+        </Modal>
     </>
     )
 }
