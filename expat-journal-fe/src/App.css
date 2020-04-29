@@ -1,5 +1,12 @@
+html{
+  background-color: #d4d4d4;
+}
+
 .App {
   text-align: center;
+  background-color: #d4d4d4;
+  height: 100%;
+
 }
 
 a {
@@ -20,30 +27,45 @@ align-items: center;
 color: #01D4B4;
 text-decoration: none;
 justify-content: center;
+background-color: inherit;
 }
 .posts-container{
   display:flex;
   flex-wrap: wrap;
   margin: 2%;
   justify-content: center;
+
 }
 .post-hero{
   margin:2%;
   padding:2%;
-  background-color: darkgrey;
+  background-color: white;
   border-radius: 15px;
   max-width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-content: center;
 }
 .buttons{
   margin-top:1%;
   display:flex;
   justify-content: space-evenly;
+  width:100%;
+}
+.imgdiv{
+  width:100%;
+  background-color: white;
+}
+h4{
+  width:100%;
+  background-color: white;
 }
 .buttons2{
   margin-top:1%;
+  background-color: inherit;
+  color:black;
+  border-color: #FF9c00
 
 }
 .postsContainer{
@@ -55,5 +77,6 @@ justify-content: center;
 
 img{
   border-radius: 15px;
+  width:100%;
 }
 
