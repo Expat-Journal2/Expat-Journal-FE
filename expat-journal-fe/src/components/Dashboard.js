@@ -22,13 +22,13 @@ useEffect(()=>{
 const handleDelete = (id) =>  {
     axiosWithAuth()
     .delete(`/api/users/${props.id}/blogs/${id}`)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-    
-    setTimeout((() => {
+    .then(res => {
+        console.log(res)
         history.push("/dashboard")
         history.go(0)
-    }),1000)
+        })
+    .catch(err => console.log(err))
+    
     
 }
 function handleUpdate(id) {
