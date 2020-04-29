@@ -26,7 +26,6 @@ if (!props.blogs){
 
     return(
     <>
-        <Header/>
         <div className="posts-container">
             {props.blogs.map(blog => {
                 return (
@@ -48,7 +47,8 @@ if (!props.blogs){
 const mapStateToProps = state => {
 
     return {
-        blogs: state.postReducer.blogs
+        blogs: state.postReducer.blogs,
+        isLoggedIn: state.postReducer.isLoggedIn
     }
 }
 export default connect(

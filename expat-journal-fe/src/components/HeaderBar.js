@@ -30,16 +30,7 @@ justify-content: space-around;
 const Span = styled.span`
 color: orange;
 `
-const ATag = styled.a`
-margin: 1.5% auto;
-font-family: Roboto;
-font-size: 1.3rem;
-display: flex;
-align-items: center;
-color: #01D4B4;
-text-decoration: none;
-justify-content: center;
-`
+
 
 
 function HeaderBar(props) {
@@ -72,9 +63,9 @@ function HeaderBar(props) {
                 <Link to="/login"  className="ATag">Login</Link>
             </MoreLinks>)}
             {props.isLoggedIn && (<MoreLinks>
-                <Link onClick={toggle}  className="ATag">New Post</Link>
+                <Link onClick={toggle}  className="ATag"><i class="fas fa-plus"></i></Link>
                 <AddPost show={modal} toggle={toggle}/>
-                <Link onClick={LogOut}  className="ATag">Log Out</Link>
+                <Link onClick={LogOut}  className="ATag" alt="sign out"><i class="fas fa-sign-out-alt" alt="sign out"></i></Link>
 
                 </MoreLinks>)}
 
