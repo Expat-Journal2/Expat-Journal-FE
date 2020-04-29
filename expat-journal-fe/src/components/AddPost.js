@@ -7,7 +7,7 @@ import {AddNewPost} from "../store/actions"
 import {connect, useDispatch} from "react-redux"
 import Header from "./Header";
 
-import { Modal} from 'reactstrap';
+import { Modal, Button, ModalHeader, ModalFooter, ModalBody} from 'reactstrap';
 
 
 const Form = styled.form
@@ -38,7 +38,7 @@ const Input = styled.input
         margin-top: 3%;
         `
 
-const Button = styled.button
+const StyledButton = styled.button
     `
     margin: 3% auto;
 width: 30%;
@@ -116,13 +116,13 @@ function AddPost(props) {
     <>  
         {/* <Header/> */}
         <Modal isOpen={props.show}>
-
+<ModalHeader><h2>Add Post</h2></ModalHeader>
          
         <Form onSubmit={(e)=>{
             
             dispatch(AddNewPost(newPost))
         }}>
-            <h2>Add Post</h2>
+
             <Label>Post Title:&nbsp;
                 <Input
                     value={formValues.title}

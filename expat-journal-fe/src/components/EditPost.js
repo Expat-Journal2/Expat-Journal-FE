@@ -7,7 +7,7 @@ import {AddNewPost} from "../store/actions"
 import {connect, useDispatch} from "react-redux"
 
 
-import { Modal} from 'reactstrap';
+import { Modal, Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
@@ -39,7 +39,7 @@ const Input = styled.input
         margin-top: 3%;
         `
 
-const Button = styled.button
+const StyledButton = styled.button
     `
     margin: 3% auto;
 width: 30%;
@@ -82,6 +82,7 @@ function EditPost(props) {
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
     const [formDisabled, setFormDisabled] = useState(true)
+
 
 
     useEffect(() => {
@@ -140,10 +141,10 @@ function EditPost(props) {
     <>  
         {/* <Header/> */}
         <Modal isOpen={props.show}>
-
-        
+        <ModalHeader ><h2>Edit Post</h2></ModalHeader>
+        <ModalBody>
         <Form onSubmit={(e)=>handleSubmit(e)}>
-            <h2>Edit Post</h2>
+
             <Label>Post Title:&nbsp;
                 <Input
                     value={formValues.title}
@@ -191,6 +192,7 @@ function EditPost(props) {
             </Label>
             {formErrors.created_at}
 
+
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
 
@@ -202,6 +204,7 @@ function EditPost(props) {
 
 
         </Form >
+        </ModalBody>
         <Button onClick={props.toggle}>Close</Button>
         </Modal>
     </>

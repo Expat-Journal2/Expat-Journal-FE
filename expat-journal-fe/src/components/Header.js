@@ -3,6 +3,7 @@ import {connect, useDispatch} from "react-redux"
 import {Link, useHistory} from "react-router-dom"
 import {fetchAllPosts} from "../store/actions"
 import AddPost from "./AddPost";
+import {Button} from "reactstrap"
 
 
 function Header(props){
@@ -26,12 +27,12 @@ function Header(props){
         <div className="header">
             <h1>Foreigner Files</h1>
             <nav className="headerNav">
-                <Link to="/dashboard"><button>Dashboard</button></Link>
-                <Link to="/allposts"><button>All Posts</button></Link>
+                <Link to="/dashboard"><Button>Dashboard</Button></Link>
+                <Link to="/allposts"><Button>All Posts</Button></Link>
                 {/* <Link to="/addpost"><button>New Post</button></Link> */}
-                <button onClick={toggle}>New Post</button>
+                <Button color="primary" onClick={toggle}>New Post</Button>
                 <AddPost show={modal} toggle={toggle}/>
-                <button onClick={LogOut}>Log Out</button>
+                <Button color="danger" onClick={LogOut}>Log Out</Button>
             </nav>
         </div>
     )

@@ -7,6 +7,8 @@ import AllPosts from "./AllPosts";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import EditPost from "./EditPost"
+import PBlogModal from "./PersonalBlogModal"
+import {Button} from "reactstrap"
 
 
 
@@ -54,12 +56,14 @@ console.log("dashboard props",props)
                 {props.blogs.map(blog => {
                 return (
                 <div key={blog.id} className="post-hero">
-                    <h3>{blog.title}</h3>
-                    <p>{blog.textbox}</p>
-                    <img src={blog.img} />
-                    <button onClick={e => handleDelete(blog.id)}>Delete</button>
-                    <button onClick={e => handleUpdate(blog)}>Update</button>
-                </div>
+                    <img width="300px" src={blog.img} />
+                    <div className="buttons">
+                    <PBlogModal handleUpdate={handleUpdate} handleDelete={handleDelete} blog={blog} />
+                    <Button color="danger" onClick={e => handleDelete(blog.id)}>Delete</Button>
+                    <Button onClick={e => handleUpdate(blog)}>Update</Button>
+                    
+                    </div>
+                    </div>
                 )
             })}
             </div>

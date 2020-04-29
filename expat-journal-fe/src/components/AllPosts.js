@@ -3,6 +3,7 @@ import Header from "./Header";
 import {connect, useDispatch} from 'react-redux'
 import {fetchAllPosts} from "../store/actions/index"
 import {Spinner} from "reactstrap"
+import TextModal from "./AllPostModal"
 
 
 function AllPosts(props){
@@ -30,9 +31,8 @@ if (!props.blogs){
             {props.blogs.map(blog => {
                 return (
                 <div key={blog.id} className="post-hero">
-                    <h3>{blog.title}</h3>
-                    <p>{blog.textbox}</p>
-                    <img src={blog.img} />.
+                    <img width="300px" src={blog.img} />
+                    <TextModal blog={blog}/>
                 </div>
                 )
             })}
