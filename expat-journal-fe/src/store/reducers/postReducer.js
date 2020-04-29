@@ -47,7 +47,8 @@ export const postReducer = (state = initialState, action)=>{
             return {
                 ...state,
                 blogs: action.payload,
-                isLoading:false
+                isLoading:false,
+                isLoggedIn: true
             }
         case "ADD_NEW_POST_START":
             return{
