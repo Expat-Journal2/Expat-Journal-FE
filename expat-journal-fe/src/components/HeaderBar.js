@@ -8,7 +8,6 @@ import { Button } from "reactstrap"
 //styled components
 import { Navbar, OtherLinks, MoreLinks, Span } from "../assets/StyledComponents"
 
-import {Button} from "reactstrap"
 
 // Store imports
 import { fetchAllPosts } from "../store/actions"
