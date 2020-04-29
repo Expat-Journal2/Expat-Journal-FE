@@ -65,6 +65,11 @@ export const postReducer = (state = initialState, action)=>{
                 isLoading:false,
                 error: action.payload
             }
+        case "LOG_OUT":
+            return {
+                ...state,
+                isLoggedIn: false
+            }
         default:
             return state;
     }

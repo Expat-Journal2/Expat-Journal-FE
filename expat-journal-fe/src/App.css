@@ -6,7 +6,16 @@ a {
   font-family: 'Roboto', sans-serif;
 }
 
-
+.ATag{
+  margin: 1.5% auto;
+font-family: Roboto;
+font-size: 1.3rem;
+display: flex;
+align-items: center;
+color: #01D4B4;
+text-decoration: none;
+justify-content: center;
+}
 .posts-container{
   display:flex;
   flex-wrap: wrap;
@@ -15,6 +24,11 @@ a {
 }
 .post-hero{
   margin:2%;
+}
+.buttons{
+  margin-top:1%;
+  display:flex;
+  justify-content: space-evenly;
 }
 
 .postsContainer{
