@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {formValidation, addPostValidation} from "../utils/validation"
+import { formValidation, addPostValidation } from "../utils/validation"
 import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
-import {AddNewPost} from "../store/actions"
-import {connect, useDispatch} from "react-redux"
+import { AddNewPost } from "../store/actions"
+import { connect, useDispatch } from "react-redux"
 import Header from "./Header";
 
-import { Modal, Button, ModalHeader, ModalFooter, ModalBody} from 'reactstrap';
+import { Modal, Button, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
 
 
 const Form = styled.form
@@ -112,79 +112,76 @@ function AddPost(props) {
 
 
     return (
-    <>  
-        {/* <Header/> */}
-        <Modal isOpen={props.show}>
-<ModalHeader>Add Post</ModalHeader>
-         
-        <Form onSubmit={(e)=>{
-            
-            dispatch(AddNewPost(newPost))
-        }}>
+        <>
+            {/* <Header/> */}
+            <Modal isOpen={props.show}>
+                <ModalHeader>Add Post</ModalHeader>
 
-            <Label>Post Title:&nbsp;
+                <Form onSubmit={(e) => {
+
+                    dispatch(AddNewPost(newPost))
+                }}>
+
+                    <Label>Post Title:&nbsp;
                 <Input
-                    value={formValues.title}
-                    onChange={onInputChange}
-                    name='title'
-                    type='text'
-                />
-            </Label>
+                            value={formValues.title}
+                            onChange={onInputChange}
+                            name='title'
+                            type='text'
+                        />
+                    </Label>
 
-            {formErrors.title}
+                    {formErrors.title}
 
-            <Label>Caption: &nbsp;
-                <TextBox 
+                    <Label>Caption: &nbsp;
+                <TextBox
 
-                    value={formValues.textbox}
-                    onChange={onInputChange}
+                            value={formValues.textbox}
+                            onChange={onInputChange}
 
-                    name='textbox'
-                    type='text'
-                />
-            </Label>
-            {formErrors.textbox}
+                            name='textbox'
+                            type='text'
+                        />
+                    </Label>
+                    {formErrors.textbox}
 
-            <Label>Image URL: &nbsp;
-                <Input
-
-                    value={formValues.img}
-                    onChange={onInputChange}
-
-                    name='img'
-                    type='text'
-                />
-            </Label>
-            {formErrors.img}
-
-            <Label>Date added:&nbsp;
+                    <Label>Image URL: &nbsp;
                 <Input
 
-                    value={formValues.created_at}
-                    onChange={onInputChange}
-                    name='created_at'
-                    type='text'
-                    placeholder="Ex. Apr 26 2020"
-                />
-            </Label>
-            {formErrors.created_at}
+                            value={formValues.img}
+                            onChange={onInputChange}
 
-            {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
+                            name='img'
+                            type='text'
+                        />
+                    </Label>
+                    {formErrors.img}
+
+                    <Label>Date added:&nbsp;
+                <Input
+
+                            value={formValues.created_at}
+                            onChange={onInputChange}
+                            name='created_at'
+                            type='text'
+                            placeholder="Ex. Apr 26 2020"
+                        />
+                    </Label>
+                    {formErrors.created_at}
+
+                    {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
 
-            <Button 
-            // onClick={props.toggle} 
-
-            /*onClick={onSubmit} disabled={!formDisabled}*/ 
-            >
-                Add New Post
-                </Button>
+                    <Button
+                        // onClick={props.toggle} 
+                        //onClick={onSubmit}
+                        disabled={formDisabled}>Add New Post</Button>
 
 
-        </Form >
-        <Button onClick={props.toggle}>Close</Button>
-        </Modal>
-    </>
+                </Form >
+                <Button onClick={props.toggle}>Close</Button>
+            </Modal>
+        </>
     )
 }
 
@@ -192,11 +189,11 @@ function AddPost(props) {
 const mapStateToProps = state => {
 
     return {
-isLoading: state.postReducer.isLoading,
-blogs: state.postReducer.blogs
+        isLoading: state.postReducer.isLoading,
+        blogs: state.postReducer.blogs
     }
 }
 export default connect(
     mapStateToProps,
-    {AddNewPost},
+    { AddNewPost },
 )(AddPost)
