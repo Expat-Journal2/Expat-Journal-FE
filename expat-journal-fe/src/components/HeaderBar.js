@@ -3,6 +3,11 @@ import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 import styled from 'styled-components';
+
+import { Button } from "reactstrap"
+//styled components
+import { Navbar, OtherLinks, MoreLinks, Span } from "../assets/StyledComponents"
+
 import {Button} from "reactstrap"
 
 // Store imports
@@ -11,26 +16,19 @@ import { fetchAllPosts } from "../store/actions"
 // component imports
 import AddPost from "./AddPost"
 
-//style imports
-import {Navbar, OtherLinks} from "../assets/StyledComponents"
-
-
-
-
-
 
 function HeaderBar(props) {
 
-    const {push} = useHistory();
+    const { push } = useHistory();
     const dispatch = useDispatch();
 
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
-        const LogOut = event => {
+    const LogOut = event => {
         event.preventDefault();
         localStorage.removeItem('token');
         localStorage.removeItem('userId')
-        dispatch({type: "LOG_OUT"})
+        dispatch({ type: "LOG_OUT" })
         push("/loggedout")
     }
 
@@ -44,17 +42,17 @@ function HeaderBar(props) {
                 <Link to="/allposts" className="ATag">View All Posts</Link>
                 <Link to="#" className="ATag">About</Link>
             </OtherLinks>
-            {!props.isLoggedIn && (            <MoreLinks>
+            {!props.isLoggedIn && (<MoreLinks>
                 <Link to="/register" className="ATag">Signup </Link>
                 <Span> | </Span>
-                <Link to="/login"  className="ATag">Login</Link>
+                <Link to="/login" className="ATag">Login</Link>
             </MoreLinks>)}
             {props.isLoggedIn && (<MoreLinks>
-                <Link onClick={toggle}  className="ATag"><i class="fas fa-plus"></i></Link>
-                <AddPost show={modal} toggle={toggle}/>
-                <Link onClick={LogOut}  className="ATag" alt="sign out"><i class="fas fa-sign-out-alt" alt="sign out"></i></Link>
+                <Link onClick={toggle} className="ATag"><i class="fas fa-plus"></i></Link>
+                <AddPost show={modal} toggle={toggle} />
+                <Link onClick={LogOut} className="ATag" alt="sign out"><i class="fas fa-sign-out-alt" alt="sign out"></i></Link>
 
-                </MoreLinks>)}
+            </MoreLinks>)}
 
         </Navbar>
     )

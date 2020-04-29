@@ -5,10 +5,7 @@ import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
 import { useHistory, Link } from "react-router-dom"
 import { formValidation } from "../utils/validation"
-
 import * as yup from 'yup'
-
-
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
 
@@ -101,7 +98,7 @@ function LoginForm(props) {
                     name='password'
                     type='password'
                 />
-                </label>
+            </label>
 
             <div>
                 {formErrors.password}

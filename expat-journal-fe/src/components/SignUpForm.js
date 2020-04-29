@@ -5,40 +5,14 @@ import { axiosWithAuth } from "../utils/axiosWithAuth"
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useInput } from "../hooks/useInput";
-
 import { formValidation } from "../utils/validation"
-
 import * as yup from 'yup'
 import { useHistory, Link } from 'react-router-dom'
 
+///styled components
+import { Form, Label, Input, Button } from "../assets/StyledComponents"
 
 
-const Form = styled.form
-    `
-        display: flex;
-        flex-direction: column;
-        background-color: lightgrey;
-        width: 50%;
-        margin: 3% auto;
-        padding: 2% 0; 
-        `
-
-const Label = styled.label
-    `
-        justify-content: flex-end;
-        `
-
-const Input = styled.input
-    `
-        margin-top: 3%;
-        `
-
-const Button = styled.button
-    `
-    margin: 3% auto;
-width: 30%;
-
-`
 const initialFormValues = {
     ///// TEXT INPUTS /////
     fullname: '',
