@@ -15,7 +15,7 @@ function PBlogModal (props){
         setNestedModal(!nestedModal);
         setCloseAll(true)
     }
-console.log("textmodal",props.blog)
+
     return(
         <div className="textModal">
             <Button onClick={toggle}>Read About This Photo</Button>

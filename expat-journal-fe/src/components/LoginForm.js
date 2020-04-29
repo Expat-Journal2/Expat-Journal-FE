@@ -39,13 +39,11 @@ function LoginForm(props) {
         axiosWithAuth()
             .post('/api/auth/login', formValues)
             .then(res => {
-                console.log(res.data)
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('userId', res.data.userId)
                 push("/dashboard")
             })
             .catch(err => {
-                console.log(err.data.message)
                 const error = err.data.message
             })
     }
@@ -119,7 +117,6 @@ function LoginForm(props) {
     )
 }
 const mapStateToProps = state => {
-    console.log(`mapstatetoprops on loginform`, state)
     return {
         fullname: state.formReducer.fullname,
         username: state.formReducer.username,

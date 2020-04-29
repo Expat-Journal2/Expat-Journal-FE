@@ -52,7 +52,7 @@ width: 30%;
 
 function EditPost(props) {
     const history = useHistory()
-    console.log("title:", props.blogToEdit.title)
+
     const initialFormValues = {
         title: props.blogToEdit.title,
         textbox: props.blogToEdit.textbox,
@@ -76,8 +76,6 @@ function EditPost(props) {
         
     },[props.blogToEdit.title])
     
-
-    console.log("EditPost:",props)
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -129,11 +127,10 @@ function EditPost(props) {
         .put(`/api/users/${props.blogToEdit.user_id}/blogs/${props.blogToEdit.id}`,formValues)
         .then(res => {
 
-            console.log(res)
             history.push("/dashboard")
             history.go(0)
         })
-        .catch(err => console.log(err))
+        .catch(err => alert(err))
     }
 
 
