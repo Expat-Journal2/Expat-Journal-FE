@@ -21,8 +21,8 @@ function AllPosts(props){
 
     if (!props.blogs){
         return(
-            <div>Loading...
-                <Spinner />
+            <div>
+                <Spinner color="primary" />
             </div>
         )
     } else {

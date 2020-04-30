@@ -1,5 +1,5 @@
 
-import { connect } from "react-redux"
+import { connect, useDispatch } from "react-redux"
 import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 import React, { useState, useEffect } from 'react';
@@ -39,7 +39,7 @@ const initialFormErrors = {
 
 function SignupForm(props) {
     const { push } = useHistory()
-
+    const dispatch = useDispatch()
 
     const [checked, setChecked] = useState(false);
 
@@ -69,12 +69,15 @@ function SignupForm(props) {
         axiosWithAuth()
             .post('/api/auth/register', newUser)
             .then(res => {
+                dispatch({type: "ADD_NEW_USER_SUCCESS"})
                 push('/login')
             })
             .catch(err => {
-                alert(err)
+                console.log(err.response.data.error)
+                dispatch({type: "ADD_NEW_USER_ERROR", payload: err.response.data.error})
+         
             })
-
+        
 
     }
 
@@ -207,6 +210,7 @@ function SignupForm(props) {
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
             <Button onClick={onSubmit} disabled={formDisabled}>Sign Up!</Button>
+            {props.error && (<div>Username Must Be Unique</div>)}
             <h4>Already Have An Account? Click <Link to="/login">HERE</Link> to log in!</h4>
         </Form >
     )
@@ -216,6 +220,7 @@ function SignupForm(props) {
 const mapStateToProps = state => {
     return {
         isDisabled: state.formReducer.isDisabled,
+        error: state.postReducer.error
     }
 }
 export default connect(
