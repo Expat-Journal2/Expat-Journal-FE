@@ -2,13 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
-import styled from 'styled-components';
-
-import { Button } from "reactstrap"
 //styled components
 import { Navbar, OtherLinks, MoreLinks, Span } from "../assets/StyledComponents"
-
-import {Button} from "reactstrap"
 
 // Store imports
 import { fetchAllPosts } from "../store/actions"
@@ -48,9 +43,9 @@ function HeaderBar(props) {
                 <Link to="/login" className="ATag">Login</Link>
             </MoreLinks>)}
             {props.isLoggedIn && (<MoreLinks>
-                <Link onClick={toggle} className="ATag"><i class="fas fa-plus"></i></Link>
+                <Link onClick={toggle} className="ATag"><i className="fas fa-plus"></i></Link>
                 <AddPost show={modal} toggle={toggle} />
-                <Link onClick={LogOut} className="ATag" alt="sign out"><i class="fas fa-sign-out-alt" alt="sign out"></i></Link>
+                <Link onClick={LogOut} className="ATag" alt="sign out"><i className="fas fa-sign-out-alt" alt="sign out"></i></Link>
 
             </MoreLinks>)}
 
