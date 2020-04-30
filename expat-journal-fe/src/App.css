@@ -219,9 +219,10 @@ h3{
   color:white;
 }
 .aboutcards{
-  display:flex;
-  width:100%;
+  width:80%;
+  margin:3% auto;
 }
 .indcard{
   width: 30%;
+  margin: 10% 10%;
 }
