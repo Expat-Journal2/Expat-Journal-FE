@@ -150,3 +150,10 @@ h2{
   border-radius: 10px;
   color:white;
 }
+.aboutcards{
+  display:flex;
+  width:100%;
+}
+.indcard{
+  width: 30%;
+}
