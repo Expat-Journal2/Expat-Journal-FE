@@ -13,7 +13,7 @@ function Home(){
                     </h2>
                     <p className="home-p">The home of beautiful pictures and stories from expats around the world</p>
                 </section>
-                <Link to="/register"><button>Get Started</button></Link>
+                <Link to="/register"><button className="home-button">Get Started</button></Link>
             </div>
             <div className="home-body">
                 <div className="home-body-left">
