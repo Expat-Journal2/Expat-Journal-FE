@@ -62,7 +62,7 @@ background-color: inherit;
   align-content: center;
 }
 .buttons{
-  margin-top:1%;
+  margin:4% 2%;
   display:flex;
   justify-content: space-evenly;
   width:100%;
@@ -76,7 +76,7 @@ h4{
   background-color: white;
 }
 .buttons2{
-  margin-top:1%;
+  margin-top:4%;
   background-color: inherit;
   color:black;
   border-color: #FF9c00
