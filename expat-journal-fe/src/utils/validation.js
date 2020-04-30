@@ -15,11 +15,11 @@ export const formValidation = yup.object().shape({
         .required('Username is required!'),
     password: yup
         .string()
-        .required('Password is required'),
+        .required('Password is required!'),
 
     password2:
         yup.string()
-            .required('Password confirm is required')
+            .required('Password confirm is required!')
             .when("password", {
                 is: value => value && value.length > 0,
 

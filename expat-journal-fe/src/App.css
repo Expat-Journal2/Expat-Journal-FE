@@ -21,7 +21,7 @@ body {
   background-color: rgba(201, 76, 76, 0.0);
   height: 100%;
   
-
+/*NAVBAR*/
 }
 a {
   font-family: 'Roboto', sans-serif;
@@ -30,6 +30,7 @@ a {
 
 a:hover{
   color: white;
+    transition: all 0.5s ease-out;
 }
 
 .ATag{
@@ -43,6 +44,31 @@ text-decoration: none;
 justify-content: center;
 background-color: inherit;
 }
+
+
+.fa-plus:hover:after{
+  content:' Add Post';
+  font-family: "Roboto";
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.fa-sign-out-alt:hover:after{
+  content:' Log Out';
+  font-family: "Roboto";
+  font-size: 1.3rem;
+  font-weight: 500;
+
+}
+
+/**/
+
+/*SIGNUP FORM CHECKBOX*/
+#checkbox{
+width: 2%;
+}
+
+
 .posts-container{
   display:flex;
   flex-wrap: wrap;
