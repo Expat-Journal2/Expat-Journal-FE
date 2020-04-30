@@ -54,17 +54,20 @@ export const H2 = styled.h2
 
 export const Label = styled.label
     `
-        
         color: #01D4B4;
         font-size: 1.1rem;
         font-weight: 500;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 20%;
+        
         `
 
 export const Input = styled.input
     `
         margin-top: 3%;
-        width: 40%;
+        width: 60%;
         opacity: 0.7;
     
         `
