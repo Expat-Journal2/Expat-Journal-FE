@@ -15,6 +15,17 @@ margin: 0 auto;
 justify-content: space-around;
 padding: 1% 0;
 `
+export const FooterBar = styled.div`
+width:100%;
+height: 30px;
+background: rgba(0, 0, 0, 0.4);
+display:flex;
+align-self:center;
+justify-content:center;
+font-family: "Roboto";
+position:fixed;
+bottom:0;
+`
 
 export const OtherLinks = styled.div`
     display: flex;

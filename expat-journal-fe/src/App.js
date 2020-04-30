@@ -14,6 +14,7 @@ import Dashboard from './components/Dashboard'
 import HeaderBar from "./components/HeaderBar"
 import AllPosts from './components/AllPosts'
 import AddPost from './components/AddPost'
+import Footer from './components/Footer'
 
 // styling imports
 import './App.css';
@@ -31,6 +32,7 @@ function App() {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <Route path="/loggedout"><LoggedOut /></Route>
             </Switch>
+            <Footer />
         </div>
     );
 }
