@@ -18,7 +18,7 @@ function PBlogModal (props){
 
     return(
         <div className="textModal">
-            <Button onClick={toggle}>Read More</Button>
+            <Button size="sm" onClick={toggle}>Read More</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader toggle={toggle}>{props.blog.title}:&nbsp;{props.blog.created_at}</ModalHeader>
             <ModalBody>
