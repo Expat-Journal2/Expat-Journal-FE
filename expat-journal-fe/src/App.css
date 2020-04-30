@@ -225,3 +225,16 @@ h3{
 .indcard{
   width: 30%;
 }
+
+
+
+/* LOGGED OUT */
+
+.loggedout{
+  margin-top:5%;
+}
+
+.loggedout p {
+margin-top: 5%;
+  font-size: 1.5rem;
+}
