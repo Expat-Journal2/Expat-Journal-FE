@@ -26,16 +26,6 @@ function Dashboard (props){
         dispatch(fetchUserBlogs())
     },[localStorage.getItem('userId')])
 
-    // const handleDelete = (id) =>  {
-    //     axiosWithAuth()
-    //     .delete(`/api/users/${localStorage.getItem('userId')}/blogs/${id}`)
-    //     .then(res => {
-   
-    //         history.push("/dashboard")
-    //         history.go(0)
-    //         })
-    //     .catch(err => alert(err))    
-    // }
 
     function handleUpdate(blog) {
         setBlogToEdit(blog)
