@@ -40,27 +40,67 @@ export const Form = styled.form
     `
         display: flex;
         flex-direction: column;
-        background-color: lightgrey;
+        background: rgba(0, 0, 0, 0.7);
         width: 50%;
         margin: 3% auto;
         padding: 2% 0; 
+        border-radius: 10px;
         `
+
+export const H2 = styled.h2
+    `
+        color: #01D4B4;
+`
 
 export const Label = styled.label
     `
-        justify-content: flex-end;
+        
+        color: #01D4B4;
+        font-size: 1.1rem;
+        font-weight: 500;
+        display: inline-block;
         `
 
 export const Input = styled.input
     `
         margin-top: 3%;
+        width: 40%;
+        opacity: 0.7;
+    
         `
+
+export const Errors = styled.div
+    `
+    font-family: "Roboto";
+    color: #FF3636;
+    font-weight: 500;
+   font-size: 1rem;
+`
 
 export const Button = styled.button
     `
     margin: 3% auto;
-width: 30%;
+    width: 30%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+    font-family: "Roboto";
+    font-size: 1.2rem;
+    font-weight: 600;
+    
 
+    &:hover{
+        color: #01D4B4;
+        background: rgba(0, 0, 0, 0.9);
+        transition: 0.5s;
+    }
+
+`
+
+export const H5 = styled.h5
+    `
+    color:  #01D4B4;
+        background: rgba(0, 0, 0, 0.8);
 `
 
 //////ADD POST FORM
@@ -77,7 +117,7 @@ export const PostForm = styled.form
 
 export const PostLabel = styled.label
     `
-        justify-content: flex-end;
+        color: blue;
         `
 
 export const PostTextBox = styled.textarea

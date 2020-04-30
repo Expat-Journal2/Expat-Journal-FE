@@ -8,6 +8,9 @@ import { formValidation } from "../utils/validation"
 import * as yup from 'yup'
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
+///styled components
+import { Form, H2, Label, Input, Errors, Button, H5 } from "../assets/StyledComponents"
+
 
 const initialState = {
     username: "",
@@ -77,40 +80,40 @@ function LoginForm(props) {
     }
 
     return (
-        <form>
-            <h2>Log In</h2>
+        <Form>
+            <H2>Log In</H2>
             {/* ////////// TEXT INPUTS ////////// */}
-            <label>Username:&nbsp;
-                <input
+            <Label>Username:&nbsp;
+                <Input
                     value={user.username}
                     onChange={handleChange}
                     name='username'
                     type='text'
                 />
-            </label>
-            <div>
+            </Label>
+            <Errors>
                 {formErrors.username}
-            </div>
-            <label>Password:&nbsp;
-            <input
+            </Errors>
+            <Label>Password:&nbsp;
+            <Input
                     value={user.password}
                     onChange={handleChange}
                     name='password'
                     type='password'
                 />
-            </label>
+            </Label>
 
-            <div>
+            <Errors>
                 {formErrors.password}
-            </div>
+            </Errors>
 
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
-            <button
+            <Button
                 onClick={submitLogin}
-            //disabled={disabled}
-            >Log In</button>
-            <h4>Need an account? Click <Link to="/register">HERE</Link> to sign up!</h4>
-        </form >
+            // disabled={disabled}
+            >Log In</Button>
+            <H5>Need an account? Click <Link to="/register">HERE</Link> to sign up!</H5>
+        </Form >
     )
 }
 const mapStateToProps = state => {
