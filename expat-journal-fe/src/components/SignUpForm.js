@@ -199,16 +199,16 @@ function SignupForm(props) {
             <Errors>
                 {formErrors.password2}
             </Errors>
-            <Label>
+            <Label htmlFor="termsOfService" id="conditions">
                 <Input id="checkbox"
                     checked={formValues.checked}
                     onChange={onCheckboxChange}
-
                     name='termsOfService'
                     type="checkbox"
                 />
-                 &nbsp; I Agree to the Terms and Conditions
+                I Agree to the Terms and Conditions
             </Label>
+            
             <Errors>
                 {formErrors.termsOfService}
             </Errors>
