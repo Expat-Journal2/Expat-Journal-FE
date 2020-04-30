@@ -4,41 +4,42 @@ import {connect, useDispatch} from 'react-redux'
 import {fetchAllPosts} from "../store/actions/index"
 import {Spinner} from "reactstrap"
 import TextModal from "./AllPostModal"
+import AllPostImageModal from "./AllPostImageModal";
 
 
 function AllPosts(props){
+  
+    const dispatch=useDispatch()
+
+    useEffect(()=>{
+    props.fetchAllPosts()
+    },[])
 
 
-const dispatch=useDispatch()
 
-useEffect(()=>{
-props.fetchAllPosts()
-},[])
+    if (!props.blogs){
 
+        return(
+            <div>Loading...</div>
+        )
+    } else {
 
-
-if (!props.blogs){
-
-    return(
-        <div>Loading...</div>
-    )
-} else {
-
-    return(
-    <>
-        <div className="posts-container">
-            {props.blogs.map(blog => {
-                return (
-                <div key={blog.id} className="post-hero">
-                    <h4>{blog.title}</h4>
-                    <img width="300px" src={blog.img} />
-                    <TextModal blog={blog}/>
-                </div>
-                )
-            })}
-        </div>
-    </>
-)}
+        return(
+        <>
+            <div className="posts-container">
+                {props.blogs.map(blog => {
+                    return (
+                    <div key={blog.id} className="post-hero">
+                        <h4>{blog.title}</h4>
+                        {/* <img width="300px" src={blog.img} /> */}
+                        <AllPostImageModal img={blog.img} width="300px" />
+                        <TextModal blog={blog}/>
+                    </div>
+                    )
+                })}
+            </div>
+        </>
+    )}
 
 
 }
