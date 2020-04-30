@@ -4,6 +4,8 @@ import { connect, useDispatch } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 //styled components
 import { Navbar, OtherLinks, MoreLinks, Span } from "../assets/StyledComponents"
+import logo from "../images/logoimg.svg"
+
 
 // Store imports
 import { fetchAllPosts } from "../store/actions"
@@ -32,7 +34,7 @@ function HeaderBar(props) {
 
         <Navbar>
             <OtherLinks>
-                <Link to="/" className="ATag">Foreigner Files</Link>
+                <Link to="/" className="ATag"><img src={logo}/></Link>
                 <Link to="/dashboard" className="ATag">Dashboard</Link>
                 <Link to="/allposts" className="ATag">View All Posts</Link>
                 <Link to="#" className="ATag">About</Link>
