@@ -15,6 +15,7 @@ import HeaderBar from "./components/HeaderBar"
 import AllPosts from './components/AllPosts'
 import AddPost from './components/AddPost'
 import Footer from './components/Footer'
+import About from "./components/About"
 
 // styling imports
 import './App.css';
@@ -31,6 +32,7 @@ function App() {
               <Route exact path="/addpost"><AddPost /></Route>        
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <Route path="/loggedout"><LoggedOut /></Route>
+              <Route exact path="/about"><About /></Route>
             </Switch>
             <Footer />
         </div>

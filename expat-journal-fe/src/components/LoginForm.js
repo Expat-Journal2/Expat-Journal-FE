@@ -55,7 +55,7 @@ function LoginForm(props) {
                 push("/dashboard")
             })
             .catch(err => {
-                const error = err.data.message
+                console.log(err.data.message)
             })
     }
 

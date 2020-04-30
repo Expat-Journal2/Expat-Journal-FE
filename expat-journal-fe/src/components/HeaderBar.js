@@ -24,7 +24,8 @@ function HeaderBar(props) {
     const LogOut = event => {
         event.preventDefault();
         localStorage.removeItem('token');
-        localStorage.removeItem('userId')
+        localStorage.removeItem('userId');
+        localStorage.removeItem("fullname");
         dispatch({ type: "LOG_OUT" })
         push("/loggedout")
     }
