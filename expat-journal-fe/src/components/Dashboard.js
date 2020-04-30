@@ -8,6 +8,7 @@ import {Button} from "reactstrap"
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import EditPost from "./EditPost"
 import PBlogModal from "./PersonalBlogModal"
+import AllPostImageModal from "./AllPostImageModal";
 
 // store imports
 import {fetchUserBlogs, fetchUserInfo, editPost, handleDelete} from "../store/actions/index"
@@ -47,7 +48,8 @@ function Dashboard (props){
                     <div key={blog.id} className="post-hero">
                             <h4>{blog.title}</h4>
                             <div className="imgdiv">
-                                <img width="300px" src={blog.img} />
+                                <AllPostImageModal img={blog.img} width="300px" />
+                                {/* <img width="300px" src={blog.img} /> */}
                             </div>
                             <div className="buttons">
                                 <PBlogModal handleUpdate={handleUpdate} handleDelete={props.handleDelete} blog={blog} />
