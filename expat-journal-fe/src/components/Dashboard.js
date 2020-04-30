@@ -44,7 +44,7 @@ function Dashboard (props){
         </div>)}
             {props.blogs && (<>
                 <div className="h2div">
-                <h2>{fullname.charAt(0).toUpperCase() + fullname.slice(1)+ "'s Posts"}</h2>
+                <h3>{fullname.charAt(0).toUpperCase() + fullname.slice(1)+ "'s Posts"}</h3>
                 </div>
             <div className="postsContainer">
                 

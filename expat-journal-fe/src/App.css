@@ -138,14 +138,15 @@ img{
   height:100vh;
   color:white;
 }
+
 .home-header{
-  
   color:black;
   border-radius: 15px;
   width: 60%;
   margin:4% auto;
   padding: 3% 0px;
 }
+
 .home-body{
   width: 60%;
   margin: 0 auto;
@@ -190,8 +191,6 @@ img{
   border-radius: 5px;
   color: black;
   padding: 0 2%;
-
-  
 }
 
 .home-button:hover{
@@ -199,6 +198,7 @@ img{
   background-color: #4D4D4D;
   transform: scale(1.1);
 }
+
 .footerp{
 color: #FF9c00;
 margin:auto;
@@ -210,7 +210,7 @@ margin:auto;
   justify-content: center;
 
 }
-h2{
+h3{
   margin-top: 2%;
   background: rgba(0, 0, 0, 0.4);
   max-width: 30%;
