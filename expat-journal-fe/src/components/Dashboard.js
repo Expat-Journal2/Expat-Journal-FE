@@ -17,7 +17,7 @@ function Dashboard (props){
     const [modal, setModal] = useState(false)
     const [blogToEdit, setBlogToEdit] = useState({})
     const toggle = () => setModal(!modal)
-
+    const fullname = localStorage.getItem('fullname')
     const history = useHistory();
 
     const dispatch = useDispatch();
@@ -38,10 +38,15 @@ function Dashboard (props){
         <div className="dashboard">
         {!props.blogs && (<div className="noblogs">
         <br/> <br/>
-            <h1>Currently there are no blogs to display, click the <i className="fas fa-plus"></i> to get started</h1>
+            <h1>Welcome, {fullname.charAt(0).toUpperCase() + fullname.slice(1)}</h1>
+            <h1>Currently there are no posts to display, click the <i className="fas fa-plus"></i> to get started</h1>
         </div>)}
-            {props.blogs && (
+            {props.blogs && (<>
+                <div className="h2div">
+                <h2>{fullname.charAt(0).toUpperCase() + fullname.slice(1)+ "'s Posts"}</h2>
+                </div>
             <div className="postsContainer">
+                
                 {props.blogs.map(blog => {
                 return (
                     <div key={blog.id} className="post-hero">
@@ -59,7 +64,7 @@ function Dashboard (props){
                 )
             })}
             </div>
-            )}
+           </>)}
             <EditPost blogToEdit={blogToEdit} show={modal} toggle={toggle}/>
         </div>
     )
