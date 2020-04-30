@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
 import { useHistory, Link } from "react-router-dom"
-import { formValidation } from "../utils/validation"
+import { loginValidation } from "../utils/validation"
 import * as yup from 'yup'
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
@@ -25,13 +25,23 @@ const initialErrors = {
 
 function LoginForm(props) {
 
+    const [user, setUser] = useState({})
+    const { push } = useHistory();
+
+
 
     const [formValues, setFormValues] = useState(initialState)
     const [formErrors, setFormErrors] = useState(initialErrors)
     const [formDisabled, setFormDisabled] = useState(true)
 
-    const [user, setUser] = useState({})
-    const { push } = useHistory();
+
+    useEffect(() => {
+
+        loginValidation.isValid(formValues)
+            .then(valid => { // either true or false
+                setFormDisabled(!valid)
+            })
+    }, [formValues])
 
 
     const submitLogin = (event) => {
@@ -56,7 +66,7 @@ function LoginForm(props) {
 
 
         yup
-            .reach(formValidation, name)
+            .reach(loginValidation, name)
             .validate(value)
             .then(valid => {
 
@@ -111,7 +121,7 @@ function LoginForm(props) {
             {/* ////////// DISABLED PROP CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
             <Button
                 onClick={submitLogin}
-            // disabled={disabled}
+                disabled={formDisabled}
             >Log In</Button>
             <H5>Need an account? Click <Link to="/register">HERE</Link> to sign up!</H5>
         </Form >

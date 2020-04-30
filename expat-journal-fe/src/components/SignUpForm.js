@@ -69,15 +69,15 @@ function SignupForm(props) {
         axiosWithAuth()
             .post('/api/auth/register', newUser)
             .then(res => {
-                dispatch({type: "ADD_NEW_USER_SUCCESS"})
+                dispatch({ type: "ADD_NEW_USER_SUCCESS" })
                 push('/login')
             })
             .catch(err => {
                 console.log(err.response.data.error)
-                dispatch({type: "ADD_NEW_USER_ERROR", payload: err.response.data.error})
-         
+                dispatch({ type: "ADD_NEW_USER_ERROR", payload: err.response.data.error })
+
             })
-        
+
 
     }
 
@@ -156,6 +156,7 @@ function SignupForm(props) {
                     name='fullname'
                     type='text'
                 />
+
             </Label>
             <Errors>
                 {formErrors.fullname}
@@ -208,7 +209,7 @@ function SignupForm(props) {
                 />
                 I Agree to the Terms and Conditions
             </Label>
-            
+
             <Errors>
                 {formErrors.termsOfService}
             </Errors>
@@ -216,8 +217,8 @@ function SignupForm(props) {
 
             <Button onClick={onSubmit} disabled={formDisabled}>Sign Up!</Button>
 
-            {props.error && (<div>Username Must Be Unique</div>)}
-            <h4>Already Have An Account? Click <Link to="/login">HERE</Link> to log in!</h4>
+            {props.error && (<Errors>Username is already taken. Please enter a different username</Errors>)}
+            <H5>Already Have An Account? Click <Link to="/login">HERE</Link> to log in!</H5>
 
         </Form >
     )

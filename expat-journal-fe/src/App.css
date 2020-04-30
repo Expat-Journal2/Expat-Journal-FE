@@ -46,7 +46,7 @@ background-color: inherit;
 }
 
 
-.fa-plus:hover:after{
+.add-post:hover:after{
   content:' Add Post';
   font-family: "Roboto";
   font-size: 1.3rem;

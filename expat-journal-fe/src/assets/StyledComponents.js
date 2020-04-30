@@ -89,6 +89,8 @@ export const Errors = styled.div
     color: #FF3636;
     font-weight: 500;
    font-size: 1rem;
+   margin-left: 10%;
+
 `
 
 export const Button = styled.button

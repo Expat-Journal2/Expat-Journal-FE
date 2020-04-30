@@ -123,8 +123,6 @@ function AddPost(props) {
                             type='text'
                         />
                     </PostLabel>
-
-
                     <Errors>
                         {formErrors.img}
                     </Errors>

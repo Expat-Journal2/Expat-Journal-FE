@@ -34,7 +34,7 @@ function HeaderBar(props) {
 
         <Navbar>
             <OtherLinks>
-                <Link to="/" className="ATag"><img src={logo}/></Link>
+                <Link to="/" className="ATag"><img src={logo} /></Link>
                 <Link to="/dashboard" className="ATag">Dashboard</Link>
                 <Link to="/allposts" className="ATag">View All Posts</Link>
                 <Link to="/about" className="ATag">About</Link>
@@ -45,7 +45,7 @@ function HeaderBar(props) {
                 <Link to="/login" className="ATag">Login</Link>
             </MoreLinks>)}
             {props.isLoggedIn && (<MoreLinks>
-                <Link onClick={toggle} className="ATag"><i className="fas fa-plus"></i></Link>
+                <Link onClick={toggle} className="ATag"><i className="fas fa-plus add-post"></i></Link>
                 <AddPost show={modal} toggle={toggle} />
                 <Link onClick={LogOut} className="ATag" alt="sign out"><i className="fas fa-sign-out-alt" alt="sign out"></i></Link>
 
