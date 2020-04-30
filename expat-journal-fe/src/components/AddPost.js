@@ -12,19 +12,20 @@ import { AddNewPost } from "../store/actions"
 import Header from "./Header";
 
 //styled components
-import { PostForm, PostLabel, PostTextBox, PostInput, PostButton } from "../assets/StyledComponents"
+import { PostForm, PostLabel, PostTextBox, PostInput, PostButton, Errors } from "../assets/StyledComponents"
+
 
 
 const initialFormValues = {
     title: '',
-    textbox: '',
     created_at: '',
+    textbox: '',
 }
 
 const initialFormErrors = {
     title: '',
-    textbox: '',
     created_at: '',
+    textbox: '',
 }
 
 
@@ -93,16 +94,26 @@ function AddPost(props) {
                             type='text'
                         />
                     </PostLabel>
+
+                    <Errors>
                         {formErrors.title}
-                    <PostLabel>Caption: &nbsp;
-                        <PostTextBox
-                            value={formValues.textbox}
+                    </Errors>
+
+
+                    <PostLabel>Date added:&nbsp;
+                <PostInput
+
+                            value={formValues.created_at}
                             onChange={onInputChange}
-                            name='textbox'
+                            name='created_at'
                             type='text'
+                            placeholder="Ex. Apr 26 2020"
                         />
                     </PostLabel>
-                        {formErrors.textbox}
+                    <Errors>
+                        {formErrors.created_at}
+                    </Errors>
+
 
                     <PostLabel>Image URL: &nbsp;
                         <PostInput
@@ -112,23 +123,35 @@ function AddPost(props) {
                             type='text'
                         />
                     </PostLabel>
+
+
+                    <Errors>
                         {formErrors.img}
-                    <PostLabel>Date added:&nbsp;
-                        <PostInput
-                            value={formValues.created_at}
+                    </Errors>
+
+                    <PostLabel>Caption: &nbsp;
+                        <br />
+                        <PostTextBox
+
+                            value={formValues.textbox}
                             onChange={onInputChange}
-                            name='created_at'
+
+                            name='textbox'
                             type='text'
-                            placeholder="Ex. Apr 26 2020"
                         />
                     </PostLabel>
-                        {formErrors.created_at}
-                        {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
+                    <Errors>
+                        {formErrors.textbox}
+                    </Errors>
+
+                    {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
+
+
                     <PostButton
-                            // onClick={props.toggle} 
-                            //onClick={onSubmit}
-                            disabled={formDisabled}>Add New Post
-                    </PostButton>
+                        // onClick={props.toggle} 
+                        //onClick={onSubmit}
+                        disabled={formDisabled}>+ New Post</PostButton>
+
                 </PostForm >
                 <Button onClick={props.toggle}>Close</Button>
             </Modal>
