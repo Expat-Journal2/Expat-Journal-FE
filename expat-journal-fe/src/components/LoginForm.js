@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
 import { useInput } from "../hooks/useInput";
 import styled from 'styled-components';
@@ -27,7 +27,7 @@ function LoginForm(props) {
 
     const [user, setUser] = useState({})
     const { push } = useHistory();
-
+    const dispatch = useDispatch();
 
 
     const [formValues, setFormValues] = useState(initialState)
@@ -52,10 +52,12 @@ function LoginForm(props) {
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('userId', res.data.userId)
                 localStorage.setItem('fullname', res.data.fullname)
+                dispatch({type: "LOGIN_SUCCESS", payload: res.data})
                 push("/dashboard")
             })
             .catch(err => {
-                console.log(err.data.message)
+                console.log(err.message)
+                dispatch({type: "LOGIN_ERROR", payload: err.message})
             })
     }
 
@@ -123,6 +125,7 @@ function LoginForm(props) {
                 onClick={submitLogin}
                 disabled={formDisabled}
             >Log In</Button>
+            {props.error && (<div className="errorText"> Username or Password Is Incorrect</div>)}
             <H5>Need an account? Click <Link to="/register">HERE</Link> to sign up!</H5>
         </Form >
     )
@@ -131,7 +134,8 @@ const mapStateToProps = state => {
     return {
         fullname: state.formReducer.fullname,
         username: state.formReducer.username,
-        password: state.formReducer.password
+        password: state.formReducer.password,
+        error: state.postReducer.error
     }
 }
 export default connect(

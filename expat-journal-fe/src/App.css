@@ -225,3 +225,7 @@ h3{
 .indcard{
   width: 30%;
 }
+
+.errorText{
+  color:red;
+}
