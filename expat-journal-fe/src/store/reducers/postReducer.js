@@ -66,6 +66,16 @@ export const postReducer = (state = initialState, action)=>{
                 isLoading:false,
                 error: action.payload
             }
+        case 'DELETE_BLOG_SUCCESS':
+            return {
+                ...state,
+                error: ""
+            }
+        case 'DELETE_BLOG_FAILURE':
+            return {
+                ...state,
+                error: action.payload
+            }
         case "LOG_OUT":
             return {
                 ...state,

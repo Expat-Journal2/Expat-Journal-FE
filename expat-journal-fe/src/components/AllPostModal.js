@@ -10,13 +10,13 @@ function TextModal (props){
         <div className="textModal">
             <Button onClick={toggle} className="buttons2">Read About This Photo</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-            <ModalHeader toggle={toggle}>{props.blog.title}:&nbsp;{props.blog.created_at}</ModalHeader>
-            <ModalBody>
-                {props.blog.textbox}
-            </ModalBody>
-            <ModalFooter>
-                <Button color="secondary" onClick={toggle}>Exit</Button>
-            </ModalFooter>
+                <ModalHeader toggle={toggle}>{props.blog.title}:&nbsp;{props.blog.created_at}</ModalHeader>
+                <ModalBody>
+                    {props.blog.textbox}
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="secondary" onClick={toggle}>Exit</Button>
+                </ModalFooter>
             </Modal>
         </div>
     )

@@ -1,11 +1,14 @@
-import React, {useEffect,useState} from "react";
-import Header from "./Header";
+// dependency imports
+import React, {useEffect} from "react";
 import {connect, useDispatch} from 'react-redux'
-import {fetchAllPosts} from "../store/actions/index"
 import {Spinner} from "reactstrap"
+
+// store imports
+import {fetchAllPosts} from "../store/actions/index"
+
+// component imports
 import TextModal from "./AllPostModal"
 import AllPostImageModal from "./AllPostImageModal";
-
 
 function AllPosts(props){
   
@@ -16,30 +19,29 @@ function AllPosts(props){
     },[])
 
 
-
     if (!props.blogs){
-
         return(
-            <div>Loading...</div>
+            <div>Loading...
+                <Spinner />
+            </div>
         )
     } else {
-
         return(
-        <>
-            <div className="posts-container">
-                {props.blogs.map(blog => {
-                    return (
-                    <div key={blog.id} className="post-hero">
-                        <h4>{blog.title}</h4>
-                        {/* <img width="300px" src={blog.img} /> */}
-                        <AllPostImageModal img={blog.img} width="300px" />
-                        <TextModal blog={blog}/>
-                    </div>
-                    )
-                })}
-            </div>
-        </>
-    )}
+            <>
+                <div className="posts-container">
+                    {props.blogs.map(blog => {
+                        return (
+                        <div key={blog.id} className="post-hero">
+                            <h4>{blog.title}</h4>
+                            {/* <img width="300px" src={blog.img} /> */}
+                            <AllPostImageModal img={blog.img} width="300px" />
+                            <TextModal blog={blog}/>
+                        </div>
+                        )
+                    })}
+                </div>
+            </>
+        )}
 
 
 }

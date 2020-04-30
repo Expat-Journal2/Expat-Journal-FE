@@ -1,23 +1,21 @@
+// dependency imports
 import React, {useEffect,useState} from "react";
-import Header from "./Header";
-import {fetchUserBlogs, fetchUserInfo, editPost} from "../store/actions/index"
 import {connect, useDispatch} from "react-redux";
-import AddPost from "./AddPost"
-import AllPosts from "./AllPosts";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
-import EditPost from "./EditPost"
-import PBlogModal from "./PersonalBlogModal"
 import {Button} from "reactstrap"
 
+// component imports
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import EditPost from "./EditPost"
+import PBlogModal from "./PersonalBlogModal"
 
+// store imports
+import {fetchUserBlogs, fetchUserInfo, editPost, handleDelete} from "../store/actions/index"
 
 function Dashboard (props){
 
-
     const [modal, setModal] = useState(false)
     const [blogToEdit, setBlogToEdit] = useState({})
-
     const toggle = () => setModal(!modal)
 
     const history = useHistory();
@@ -28,16 +26,16 @@ function Dashboard (props){
         dispatch(fetchUserBlogs())
     },[localStorage.getItem('userId')])
 
-    const handleDelete = (id) =>  {
-        axiosWithAuth()
-        .delete(`/api/users/${localStorage.getItem('userId')}/blogs/${id}`)
-        .then(res => {
+    // const handleDelete = (id) =>  {
+    //     axiosWithAuth()
+    //     .delete(`/api/users/${localStorage.getItem('userId')}/blogs/${id}`)
+    //     .then(res => {
    
-            history.push("/dashboard")
-            history.go(0)
-            })
-        .catch(err => alert(err))    
-    }
+    //         history.push("/dashboard")
+    //         history.go(0)
+    //         })
+    //     .catch(err => alert(err))    
+    // }
 
     function handleUpdate(blog) {
         setBlogToEdit(blog)
@@ -48,6 +46,10 @@ function Dashboard (props){
 
     return(
         <div className="dashboard">
+        {!props.blogs && (<div className="noblogs">
+        <br/> <br/>
+            <h1>Currently there are no blogs to display, click the <i className="fas fa-plus"></i> to get started</h1>
+        </div>)}
             {props.blogs && (
             <div className="postsContainer">
                 {props.blogs.map(blog => {
@@ -58,9 +60,10 @@ function Dashboard (props){
                                 <img width="300px" src={blog.img} />
                             </div>
                             <div className="buttons">
-                                <PBlogModal handleUpdate={handleUpdate} handleDelete={handleDelete} blog={blog} />
+                                <PBlogModal handleUpdate={handleUpdate} handleDelete={props.handleDelete} blog={blog} />
                                 <Button size="sm" onClick={e => handleUpdate(blog)}>Update</Button>
-                                <Button size="sm" color="danger" onClick={e => handleDelete(blog.id)}>Delete</Button>
+                                <Button size="sm" color="danger" onClick={e =>{props.handleDelete(blog.id);history.push('/dashboard');history.go(0)
+                                }}>Delete</Button>
                             </div>
                     </div>
                 )
@@ -82,5 +85,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {fetchUserBlogs, fetchUserInfo}
+    {fetchUserBlogs, fetchUserInfo, handleDelete}
 )(Dashboard);

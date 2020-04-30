@@ -24,7 +24,7 @@ export const fetchUserBlogs = () => {
             dispatch({type: "FETCH_DATA_SUCCESS", payload: res})
         })
         .catch(err => {
-            alert(`User has no posts, please click "New Post" to get started`,err)
+            console.log(`User has no posts, please click "New Post" to get started`,err)
         })
     }
 }
@@ -73,3 +73,19 @@ export const editPost = post => {
     }
 }
 //Not working (((((((((((((((())))))))))))))))
+
+export const handleDelete = (id) =>  {
+    return dispatch => {
+        dispatch({type: 'DELETE_BLOG_START'})
+    axiosWithAuth()
+    .delete(`/api/users/${localStorage.getItem('userId')}/blogs/${id}`)
+    .then(res => {
+        console.log(res)
+        dispatch({type: "DELETE_POST_SUCCESS"})
+        })
+    .catch(err => {
+        console.log(err)
+        dispatch({type: "DELETE_POST_FAILURE", payload:err})
+    })    
+}
+}
