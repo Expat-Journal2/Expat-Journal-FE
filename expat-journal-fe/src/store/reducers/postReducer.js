@@ -92,6 +92,21 @@ export const postReducer = (state = initialState, action)=>{
                 ...state,
                 error: action.payload
             }
+        case "LOGIN_SUCCESS":
+            return {
+                ...state,
+                error: "",
+                isLoggeIn: true,
+                id: action.payload.userId,
+                fullname: action.payload.fullname,
+                username: action.payload.username
+            }
+        case "LOGIN_ERROR":
+            return {
+                ...state,
+                error: action.payload,
+                isLoggedIn: false
+            }
         default:
             return state;
     }

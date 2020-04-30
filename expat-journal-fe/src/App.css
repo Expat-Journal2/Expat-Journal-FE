@@ -227,6 +227,10 @@ h3{
 }
 
 
+.errorText{
+  color:red;
+
+
 
 /* LOGGED OUT */
 
@@ -237,4 +241,5 @@ h3{
 .loggedout p {
 margin-top: 5%;
   font-size: 1.5rem;
+
 }
