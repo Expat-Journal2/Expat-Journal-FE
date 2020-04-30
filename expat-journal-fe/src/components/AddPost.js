@@ -1,15 +1,18 @@
+// dependency imports
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom'
 import { formValidation, addPostValidation } from "../utils/validation"
 import * as yup from 'yup'
-import { useHistory } from 'react-router-dom'
-import { AddNewPost } from "../store/actions"
 import { connect, useDispatch } from "react-redux"
-import Header from "./Header";
 import { Modal, Button, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
+
+// component imports
+import { AddNewPost } from "../store/actions"
+import Header from "./Header";
+
 //styled components
 import { PostForm, PostLabel, PostTextBox, PostInput, PostButton, Errors } from "../assets/StyledComponents"
-
 
 
 
@@ -27,6 +30,7 @@ const initialFormErrors = {
 
 
 function AddPost(props) {
+
     const { push } = useHistory()
     const dispatch = useDispatch()
 
@@ -37,10 +41,7 @@ function AddPost(props) {
 
 
     useEffect(() => {
-
-
         addPostValidation.isValid(formValues)
-
             .then(valid => { // either true or false
                 setFormDisabled(!valid)
             })
@@ -56,7 +57,6 @@ function AddPost(props) {
                 setFormErrors({
                     ...formErrors,
                     [name]: formValues.name,
-
                 })
             })
             .catch(err => {
@@ -83,20 +83,18 @@ function AddPost(props) {
             {/* <Header/> */}
             <Modal isOpen={props.show}>
                 <ModalHeader>Add Post</ModalHeader>
-
                 <PostForm onSubmit={(e) => {
-
                     dispatch(AddNewPost(newPost))
                 }}>
-
                     <PostLabel>Post Title:&nbsp;
-                <PostInput
+                        <PostInput
                             value={formValues.title}
                             onChange={onInputChange}
                             name='title'
                             type='text'
                         />
                     </PostLabel>
+
                     <Errors>
                         {formErrors.title}
                     </Errors>
@@ -116,16 +114,16 @@ function AddPost(props) {
                         {formErrors.created_at}
                     </Errors>
 
-                    <PostLabel>Image URL: &nbsp;
-                <PostInput
 
+                    <PostLabel>Image URL: &nbsp;
+                        <PostInput
                             value={formValues.img}
                             onChange={onInputChange}
-
                             name='img'
                             type='text'
                         />
                     </PostLabel>
+
 
                     <Errors>
                         {formErrors.img}
@@ -154,7 +152,6 @@ function AddPost(props) {
                         //onClick={onSubmit}
                         disabled={formDisabled}>+ New Post</PostButton>
 
-
                 </PostForm >
                 <Button onClick={props.toggle}>Close</Button>
             </Modal>
@@ -164,7 +161,6 @@ function AddPost(props) {
 
 
 const mapStateToProps = state => {
-
     return {
         isLoading: state.postReducer.isLoading,
         blogs: state.postReducer.blogs

@@ -66,11 +66,31 @@ export const postReducer = (state = initialState, action)=>{
                 isLoading:false,
                 error: action.payload
             }
+        case 'DELETE_BLOG_SUCCESS':
+            return {
+                ...state,
+                error: ""
+            }
+        case 'DELETE_BLOG_FAILURE':
+            return {
+                ...state,
+                error: action.payload
+            }
         case "LOG_OUT":
             return {
                 ...state,
                 isLoggedIn: false,
                 blogs: []
+            }
+        case "ADD_NEW_USER_SUCCESS":
+            return {
+                ...state,
+                error:""
+            }
+        case "ADD_NEW_USER_ERROR":
+            return {
+                ...state,
+                error: action.payload
             }
         default:
             return state;

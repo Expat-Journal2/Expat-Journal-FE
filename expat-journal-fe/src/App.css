@@ -65,8 +65,12 @@ background-color: inherit;
 
 /*SIGNUP FORM CHECKBOX*/
 #checkbox{
-width: 2%;
+  margin:12% auto;
 }
+#conditions{
+ align-self: center;
+}
+
 
 
 .posts-container{
@@ -125,4 +129,10 @@ img{
   max-width: 100vw;
   width: 100%;
   border-radius: 0px;
+}
+
+.footerp{
+color: #FF9c00;
+margin:auto;
+
 }

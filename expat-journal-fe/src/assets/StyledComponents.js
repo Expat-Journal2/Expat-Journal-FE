@@ -15,6 +15,17 @@ margin: 0 auto;
 justify-content: space-around;
 padding: 1% 0;
 `
+export const FooterBar = styled.div`
+width:100%;
+height: 30px;
+background: rgba(0, 0, 0, 0.4);
+display:flex;
+align-self:center;
+justify-content:center;
+font-family: "Roboto";
+position:fixed;
+bottom:0;
+`
 
 export const OtherLinks = styled.div`
     display: flex;
@@ -54,17 +65,20 @@ export const H2 = styled.h2
 
 export const Label = styled.label
     `
-        
         color: #01D4B4;
         font-size: 1.1rem;
         font-weight: 500;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 20%;
+        
         `
 
 export const Input = styled.input
     `
         margin-top: 3%;
-        width: 40%;
+        width: 60%;
         opacity: 0.7;
     
         `
