@@ -10,6 +10,8 @@ STYLING: Styling used is a combination of styled components, Reactstrap and CSS.
 
 API: Documentation for the API can be found here: https://github.com/Expat-Journal2/Expat-Journal-BE/blob/master/README.md
 
+DESIGN: Font: roboto | Colours: #01D4B4 (teal), #FF9C00 (orange) , RGBA(0,0,0,0.6-0,2) (semi-transparent black), #D4D4D4 (dark grey)
+
 ### PRODUCT VISION DOCUMENT
 
 # ☝️ Proposal
