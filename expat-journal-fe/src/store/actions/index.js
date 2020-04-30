@@ -38,7 +38,7 @@ export const fetchAllPosts = () => {
             dispatch({type: "FETCH_ALL_POSTS_SUCCESS", payload: res.data})
         })
         .catch(err => {
-            alert(err)
+            console.log(err)
         })
     }
 }
