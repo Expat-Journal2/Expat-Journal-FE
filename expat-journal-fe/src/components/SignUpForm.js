@@ -10,7 +10,7 @@ import * as yup from 'yup'
 import { useHistory, Link } from 'react-router-dom'
 
 ///styled components
-import { Form, Label, Input, Button } from "../assets/StyledComponents"
+import { Form, H2, Label, Input, Errors, Button, H5 } from "../assets/StyledComponents"
 
 
 const initialFormValues = {
@@ -142,7 +142,7 @@ function SignupForm(props) {
 
     return (
         <Form onSubmit={onSubmit}>
-            <h2>Signup Form</h2>
+            <H2>Signup Form</H2>
 
 
 
@@ -154,7 +154,9 @@ function SignupForm(props) {
                     type='text'
                 />
             </Label>
-            {formErrors.fullname}
+            <Errors>
+                {formErrors.fullname}
+            </Errors>
 
             <Label>Username:&nbsp;
                 <Input
@@ -166,8 +168,9 @@ function SignupForm(props) {
                     type='text'
                 />
             </Label>
-
-            {formErrors.username}
+            <Errors>
+                {formErrors.username}
+            </Errors>
 
             <Label>Password:&nbsp;
                 <Input
@@ -178,8 +181,9 @@ function SignupForm(props) {
                     type='password'
                 />
             </Label>
-            {formErrors.password}
-
+            <Errors>
+                {formErrors.password}
+            </Errors>
             <Label>Verify Password:&nbsp;
                 <Input
 
@@ -189,25 +193,26 @@ function SignupForm(props) {
                     type='password'
                 />
             </Label>
-            {formErrors.password2}
-
+            <Errors>
+                {formErrors.password2}
+            </Errors>
             <Label>
-                <Input
+                <Input id="checkbox"
                     checked={formValues.checked}
                     onChange={onCheckboxChange}
 
                     name='termsOfService'
                     type="checkbox"
                 />
-                I Agree to the Terms and Conditions
+                 &nbsp; I Agree to the Terms and Conditions
             </Label>
-
-            {formErrors.termsOfService}
-
+            <Errors>
+                {formErrors.termsOfService}
+            </Errors>
             {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
             <Button onClick={onSubmit} disabled={formDisabled}>Sign Up!</Button>
-            <h4>Already Have An Account? Click <Link to="/login">HERE</Link> to log in!</h4>
+            <H5>Already Have An Account? Click <Link to="/login">HERE</Link> to log in!</H5>
         </Form >
     )
 }
