@@ -1,5 +1,5 @@
 import React from 'react';
-import {PLCard, BackEndCard, UICard, ReactCards} from './Cards'
+import {PLCard, BackEndCard, UICard, ReactCard1, ReactCard2, ReactCard3} from './Cards'
 import {CardDeck} from "reactstrap"
 
 function About(){

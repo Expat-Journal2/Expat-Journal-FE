@@ -141,7 +141,7 @@ export const UICard = () => {
                         </Card>
                 )
             }
-            export const ReatCard3 = () => {
+            export const ReactCard3 = () => {
                 const [react3Info, setreact3Info] = useState([])
                 useEffect(()=>{
                     axios.get(`https://api.github.com/users/${team.react[2]}`)
