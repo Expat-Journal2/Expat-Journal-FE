@@ -59,8 +59,8 @@ function Dashboard (props){
                             </div>
                             <div className="buttons">
                                 <PBlogModal handleUpdate={handleUpdate} handleDelete={handleDelete} blog={blog} />
-                                <Button onClick={e => handleUpdate(blog)}>Update</Button>
-                                <Button color="danger" onClick={e => handleDelete(blog.id)}>Delete</Button>
+                                <Button size="sm" onClick={e => handleUpdate(blog)}>Update</Button>
+                                <Button size="sm" color="danger" onClick={e => handleDelete(blog.id)}>Delete</Button>
                             </div>
                     </div>
                 )
