@@ -37,7 +37,7 @@ function HeaderBar(props) {
                 <Link to="/" className="ATag"><img src={logo}/></Link>
                 <Link to="/dashboard" className="ATag">Dashboard</Link>
                 <Link to="/allposts" className="ATag">View All Posts</Link>
-                <Link to="#" className="ATag">About</Link>
+                <Link to="/about" className="ATag">About</Link>
             </OtherLinks>
             {!props.isLoggedIn && (<MoreLinks>
                 <Link to="/register" className="ATag">Signup </Link>
