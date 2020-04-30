@@ -4,7 +4,7 @@ import * as yup from 'yup'
 ///FORM VALIDATIONS
 
 
-///SIGNUP AND LOGIN VALIDATIONS
+///SIGNUP VALIDATION
 
 export const formValidation = yup.object().shape({
     fullname: yup
@@ -19,7 +19,7 @@ export const formValidation = yup.object().shape({
 
     password2:
         yup.string()
-            .required('Password confirm is required!')
+            .required('Confirm password!')
             .when("password", {
                 is: value => value && value.length > 0,
 
@@ -37,6 +37,20 @@ export const formValidation = yup.object().shape({
 })
 
 
+////////LOGIN VALIDATION
+
+export const loginValidation =
+
+    yup.object().shape({
+        username: yup
+            .string()
+            .required('Username is required!'),
+        password: yup
+            .string()
+            .required('Password is required!'),
+    })
+
+
 ////////ADD POST VALIDATION////////
 
 export const addPostValidation = yup.object().shape({
@@ -52,7 +66,7 @@ export const addPostValidation = yup.object().shape({
 
     img: yup
         .string()
-        .required("Please include some text in your post"),
+        .required("Please include an image URL"),
 
 
     textbox: yup
@@ -61,8 +75,6 @@ export const addPostValidation = yup.object().shape({
 
 
 })
-
-
 
 
 
