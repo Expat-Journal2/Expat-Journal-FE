@@ -8,20 +8,21 @@ import { connect, useDispatch } from "react-redux"
 import Header from "./Header";
 import { Modal, Button, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
 //styled components
-import { PostForm, PostLabel, PostTextBox, PostInput, PostButton } from "../assets/StyledComponents"
+import { PostForm, PostLabel, PostTextBox, PostInput, PostButton, Errors } from "../assets/StyledComponents"
+
 
 
 
 const initialFormValues = {
     title: '',
-    textbox: '',
     created_at: '',
+    textbox: '',
 }
 
 const initialFormErrors = {
     title: '',
-    textbox: '',
     created_at: '',
+    textbox: '',
 }
 
 
@@ -96,32 +97,10 @@ function AddPost(props) {
                             type='text'
                         />
                     </PostLabel>
+                    <Errors>
+                        {formErrors.title}
+                    </Errors>
 
-                    {formErrors.title}
-
-                    <PostLabel>Caption: &nbsp;
-                <PostTextBox
-
-                            value={formValues.textbox}
-                            onChange={onInputChange}
-
-                            name='textbox'
-                            type='text'
-                        />
-                    </PostLabel>
-                    {formErrors.textbox}
-
-                    <PostLabel>Image URL: &nbsp;
-                <PostInput
-
-                            value={formValues.img}
-                            onChange={onInputChange}
-
-                            name='img'
-                            type='text'
-                        />
-                    </PostLabel>
-                    {formErrors.img}
 
                     <PostLabel>Date added:&nbsp;
                 <PostInput
@@ -133,7 +112,39 @@ function AddPost(props) {
                             placeholder="Ex. Apr 26 2020"
                         />
                     </PostLabel>
-                    {formErrors.created_at}
+                    <Errors>
+                        {formErrors.created_at}
+                    </Errors>
+
+                    <PostLabel>Image URL: &nbsp;
+                <PostInput
+
+                            value={formValues.img}
+                            onChange={onInputChange}
+
+                            name='img'
+                            type='text'
+                        />
+                    </PostLabel>
+
+                    <Errors>
+                        {formErrors.img}
+                    </Errors>
+
+                    <PostLabel>Caption: &nbsp;
+                        <br />
+                        <PostTextBox
+
+                            value={formValues.textbox}
+                            onChange={onInputChange}
+
+                            name='textbox'
+                            type='text'
+                        />
+                    </PostLabel>
+                    <Errors>
+                        {formErrors.textbox}
+                    </Errors>
 
                     {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
@@ -141,7 +152,7 @@ function AddPost(props) {
                     <PostButton
                         // onClick={props.toggle} 
                         //onClick={onSubmit}
-                        disabled={formDisabled}>Add New Post</PostButton>
+                        disabled={formDisabled}>+ New Post</PostButton>
 
 
                 </PostForm >

@@ -45,17 +45,19 @@ export const addPostValidation = yup.object().shape({
         .string()
         .required("Please add a title to your post"),
 
-    textbox: yup
+
+    created_at: yup
         .string()
-        .required("Please include some text in your post"),
+        .required("please add a date to your post"),
 
     img: yup
         .string()
         .required("Please include some text in your post"),
 
-    created_at: yup
+
+    textbox: yup
         .string()
-        .required("please add a date to your post"),
+        .required("Please include some text in your post"),
 
 
 })
