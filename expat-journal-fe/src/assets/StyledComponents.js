@@ -15,6 +15,17 @@ margin: 0 auto;
 justify-content: space-around;
 padding: 1% 0;
 `
+export const FooterBar = styled.div`
+width:100%;
+height: 30px;
+background: rgba(0, 0, 0, 0.4);
+display:flex;
+align-self:center;
+justify-content:center;
+font-family: "Roboto";
+position:fixed;
+bottom:0;
+`
 
 export const OtherLinks = styled.div`
     display: flex;
@@ -106,38 +117,62 @@ export const H5 = styled.h5
         background: rgba(0, 0, 0, 0.8);
 `
 
-//////ADD POST FORM
+//////ADD POST FORM//////////
 
 export const PostForm = styled.form
     `
-        display: flex;
-        flex-direction: column;
-        background-color: lightblue;
-        width: 90%;
-        margin: 3% auto;
-        padding: 2% 0; 
-        `
+       
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.7);
+    width: 90%;
+    margin: 3% auto;
+    padding: 2% 0; 
+    border-radius: 10px;
+    align-items: center;
+    `
+
 
 export const PostLabel = styled.label
     `
-        color: blue;
-        `
+    color: #01D4B4;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 5%;
+    width: 100%;
+    margin-left: 10%;
+
+`
 
 export const PostTextBox = styled.textarea
     `
-        margin-top: 3%;
-        width: 50%;
-        
-        `
+margin-top: 10 %;
+width: 90%;
+height: 100px;
+
+`
 
 export const PostInput = styled.input
     `
-        margin-top: 3%;
-        `
+width: 90%;
+`
 
 export const PostButton = styled.button
     `
     margin: 3% auto;
-width: 30%;
-width: 70%;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+    font-family: "Roboto";
+    font-size: 1.2rem;
+    font-weight: 600;
+    
+
+    &:hover{
+        color: #01D4B4;
+        background: rgba(0, 0, 0, 0.9);
+        transition: 0.5s;
+    }
 `

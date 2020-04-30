@@ -1,8 +1,18 @@
 # Expat-Journal-FE
 
-### PRODUCT VISION DOCUMENT
+### DOCS
 
-This is the template for the Product Vision Document that teams complete after their initial icebreaker. The PVD is crucial to the planning phase and **is mandatory for all groups to complete and submit to their Project Lead before starting their project.**
+REDUX: This project uses React Redux for state management, all actions that affect state need to be added to their pertinent reducers and to the action index. 
+
+COMPONENTS: All components are stored and accessed from the component folder
+
+STYLING: Styling used is a combination of styled components, Reactstrap and CSS. 
+
+API: Documentation for the API can be found here: https://github.com/Expat-Journal2/Expat-Journal-BE/blob/master/README.md
+
+DESIGN: Font: roboto | Colours: #01D4B4 (teal), #FF9C00 (orange) , RGBA(0,0,0,0.6-0,2) (semi-transparent black), #D4D4D4 (dark grey)
+
+### PRODUCT VISION DOCUMENT
 
 # ☝️ Proposal
 
