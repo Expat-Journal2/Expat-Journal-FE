@@ -27,7 +27,6 @@ function Dashboard (props){
         dispatch(fetchUserBlogs())
     },[localStorage.getItem('userId')])
 
-
     function handleUpdate(blog) {
         setBlogToEdit(blog)
         toggle()
