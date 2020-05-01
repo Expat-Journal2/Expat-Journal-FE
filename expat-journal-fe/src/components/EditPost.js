@@ -1,50 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {formValidation, addPostValidation} from "../utils/validation"
+import { formValidation, addPostValidation } from "../utils/validation"
 import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
-import {AddNewPost} from "../store/actions"
-import {connect, useDispatch} from "react-redux"
-
-
-import { Modal, Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import { AddNewPost } from "../store/actions"
+import { connect, useDispatch } from "react-redux"
+import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+//styled components
+import { PostForm, PostLabel, PostTextBox, PostInput, PostButton, Errors } from "../assets/StyledComponents"
 
 
-const Form = styled.form
-    `
-        display: flex;
-        flex-direction: column;
-        background-color: lightblue;
-        width: 90%;
-        margin: 3% auto;
-        padding: 2% 0; 
-        `
-
-const Label = styled.label
-    `
-        justify-content: flex-end;
-        `
-
-const TextBox = styled.input
-    `
-        margin-top: 3%;
-        height: 100px;
-        width: 50%;
-        
-        `
-
-const Input = styled.input
-    `
-        margin-top: 3%;
-        `
-
-const StyledButton = styled.button
-    `
-    margin: 3% auto;
-width: 30%;
-
-`
 
 
 
@@ -59,23 +25,23 @@ function EditPost(props) {
         created_at: props.blogToEdit.created_at,
         img: props.blogToEdit.img
     }
-    
+
     const initialFormErrors = {
         title: '',
         textbox: '',
         created_at: '',
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setFormValues({
-        title: props.blogToEdit.title,
-        textbox: props.blogToEdit.textbox,
-        created_at: props.blogToEdit.created_at,
-        img: props.blogToEdit.img
+            title: props.blogToEdit.title,
+            textbox: props.blogToEdit.textbox,
+            created_at: props.blogToEdit.created_at,
+            img: props.blogToEdit.img
         })
-        
-    },[props.blogToEdit.title])
-    
+
+    }, [props.blogToEdit.title])
+
 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -124,87 +90,95 @@ function EditPost(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         axiosWithAuth()
-        .put(`/api/users/${props.blogToEdit.user_id}/blogs/${props.blogToEdit.id}`,formValues)
-        .then(res => {
+            .put(`/api/users/${props.blogToEdit.user_id}/blogs/${props.blogToEdit.id}`, formValues)
+            .then(res => {
 
-            history.push("/dashboard")
-            history.go(0)
-        })
-        .catch(err => alert(err))
+                history.push("/dashboard")
+                history.go(0)
+            })
+            .catch(err => alert(err))
     }
 
 
+
     return (
-    <>  
-        {/* <Header/> */}
-        <Modal isOpen={props.show}>
-        <ModalHeader ><h2>Edit Post</h2></ModalHeader>
-        <ModalBody>
-        <Form onSubmit={(e)=>handleSubmit(e)}>
+        <>
+            {/* <Header/> */}
+            <Modal isOpen={props.show}>
+                <ModalHeader ><h2>Edit Post</h2></ModalHeader>
+                <ModalBody>
+                    <PostForm onSubmit={(e) => handleSubmit(e)}>
 
-            <Label>Post Title:&nbsp;
-                <Input
-                    value={formValues.title}
-                    onChange={onInputChange}
-                    name='title'
-                    type='text'
-                />
-            </Label>
+                        <PostLabel>Post Title:&nbsp;
+                        <PostInput
+                                value={formValues.title}
+                                onChange={onInputChange}
+                                name='title'
+                                type='text'
+                            />
+                        </PostLabel>
 
-            {formErrors.title}
-
-            <Label>Caption: &nbsp;
-                <TextBox 
-
-                    value={formValues.textbox}
-                    onChange={onInputChange}
-
-                    name='textbox'
-                    type='text'
-                />
-            </Label>
-            {formErrors.textbox}
-
-            <Label>Image URL: &nbsp;
-                <Input
-
-                    value={formValues.img}
-                    onChange={onInputChange}
-
-                    name='img'
-                    type='text'
-                />
-            </Label>
-            {formErrors.img}
-
-            <Label>Date added:&nbsp;
-                <Input
-
-                    value={formValues.created_at}
-                    onChange={onInputChange}
-                    name='created_at'
-                    type='text'
-                    placeholder="Ex. Apr 26 2020"
-                />
-            </Label>
-            {formErrors.created_at}
+                        <Errors>
+                            {formErrors.title}
+                        </Errors>
 
 
-            {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
+                        <PostLabel>Date added:&nbsp;
+                <PostInput
+
+                                value={formValues.created_at}
+                                onChange={onInputChange}
+                                name='created_at'
+                                type='text'
+                                placeholder="Ex. Apr 26 2020"
+                            />
+                        </PostLabel>
+                        <Errors>
+                            {formErrors.created_at}
+                        </Errors>
 
 
-            <Button 
-                /*onClick={onSubmit} disabled={!formDisabled}*/ 
-            >
-                Submit Changes
-                </Button>
+                        <PostLabel>Image URL: &nbsp;
+                        <PostInput
+                                value={formValues.img}
+                                onChange={onInputChange}
+                                name='img'
+                                type='text'
+                            />
+                        </PostLabel>
+                        <Errors>
+                            {formErrors.img}
+                        </Errors>
+
+                        <PostLabel>Caption: &nbsp;
+                        <br />
+                            <PostTextBox
+
+                                value={formValues.textbox}
+                                onChange={onInputChange}
+
+                                name='textbox'
+                                type='text'
+                            />
+                        </PostLabel>
+                        <Errors>
+                            {formErrors.textbox}
+                        </Errors>
+
+                        {/* ////////// DISABLED CANNOT SUBMIT UNTIL ALL IS COMPLETE ////////// */}
 
 
-        </Form >
-        </ModalBody>
-        <Button onClick={props.toggle}>Close</Button>
-        </Modal>
-    </>
+                        <PostButton
+                            // onClick={props.toggle} 
+                            //onClick={onSubmit}
+                            disabled={formDisabled}>Edit Post</PostButton>
+
+                    </PostForm >
+
+                </ModalBody>
+                <Button onClick={props.toggle}>Close</Button>
+            </Modal>
+        </>
     )
 }
 export default EditPost;
