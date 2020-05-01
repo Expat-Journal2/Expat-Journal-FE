@@ -4,6 +4,7 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
+import { date } from "yup";
 
 const team={
     PL:[ "MileyWright" ],
@@ -30,7 +31,7 @@ useEffect(()=>{
                 <CardBody>
                     <CardTitle>{plInfo.name}</CardTitle>
                     <CardSubtitle>Foreigner Files Project Lead</CardSubtitle>
-                    <CardText>Bio: {plInfo.bio}<br/>
+                    <CardText>
                     GitHub Handle: <a href={plInfo.html_url}>{plInfo.login}</a>
                     </CardText>
                 </CardBody>
@@ -56,7 +57,7 @@ export const BackEndCard = () => {
                     <CardBody>
                         <CardTitle>{beInfo.name}</CardTitle>
                         <CardSubtitle>Foreigner Files BackEnd</CardSubtitle>
-                        <CardText>Bio: {beInfo.bio}<br/>
+                        <CardText>
                         GitHub Handle: <a href={beInfo.html_url}>{beInfo.login}</a>
                         </CardText>
                     </CardBody>
@@ -82,7 +83,7 @@ export const UICard = () => {
                     <CardBody>
                         <CardTitle>{uiInfo.name}</CardTitle>
                         <CardSubtitle>Foreigner Files User Interface</CardSubtitle>
-                        <CardText>Bio: {uiInfo.bio}<br/>
+                        <CardText>
                         GitHub Handle: <a href={uiInfo.html_url}>{uiInfo.login}</a>
                         </CardText>
                     </CardBody>
@@ -109,7 +110,7 @@ export const UICard = () => {
                         <CardBody>
                             <CardTitle>{react1Info.name}</CardTitle>
                             <CardSubtitle>Foreigner Files User Interface</CardSubtitle>
-                            <CardText>Bio: {react1Info.bio}<br/>
+                            <CardText>
                             GitHub Handle: <a href={react1Info.html_url}>{react1Info.login}</a>
                             </CardText>
                         </CardBody>
@@ -134,7 +135,7 @@ export const UICard = () => {
                             <CardBody>
                                 <CardTitle>{react2Info.name}</CardTitle>
                                 <CardSubtitle>Foreigner Files User Interface</CardSubtitle>
-                                <CardText>Bio: {react2Info.bio}<br/>
+                                <CardText>
                                 GitHub Handle: <a href={react2Info.html_url}>{react2Info.login}</a>
                                 </CardText>
                             </CardBody>
@@ -159,11 +160,10 @@ export const UICard = () => {
                                 <CardBody>
                                     <CardTitle>{react3Info.name}</CardTitle>
                                     <CardSubtitle>Foreigner Files User Interface</CardSubtitle>
-                                    <CardText>Bio: {react3Info.bio}<br/>
+                                    <CardText>
                                     GitHub Handle: <a href={react3Info.html_url}>{react3Info.login}</a>
                                     </CardText>
                                 </CardBody>
                             </Card>
                     )
                 }
-                        

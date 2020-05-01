@@ -1,20 +1,19 @@
 import React from 'react';
 import {PLCard, BackEndCard, UICard, ReactCard1, ReactCard2, ReactCard3} from './Cards'
-import {CardDeck} from "reactstrap"
+import {CardColumns} from "reactstrap"
 
 function About(){
     return (
         <div className="aboutcards">
-        <CardDeck>
+        <CardColumns >
             <PLCard />  
             <BackEndCard />
             <UICard />  
-        </CardDeck>
-        <CardDeck>
             <ReactCard1 />
             <ReactCard2 />
             <ReactCard3 />
-        </CardDeck>
+        </CardColumns>
+
 
         </div>
     )
