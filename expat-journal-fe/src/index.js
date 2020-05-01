@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-// import logger from 'redux-logger';
+import logger from 'redux-logger';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //COMPONENT IMPORTS
@@ -15,7 +15,7 @@ import rootReducer from './store/reducers';
 //STYLING IMPORTS
 import './index.css';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
   <Provider store={store}>
