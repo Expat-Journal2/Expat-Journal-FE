@@ -27,9 +27,6 @@ function Dashboard (props){
         dispatch(fetchUserBlogs())
     },[localStorage.getItem('userId')])
 
-    useEffect(()=>{
-        
-    },[])
     function handleUpdate(blog) {
         setBlogToEdit(blog)
         toggle()
@@ -61,7 +58,7 @@ function Dashboard (props){
                             <div className="buttons">
                                 <PBlogModal handleUpdate={handleUpdate} handleDelete={props.handleDelete} blog={blog} />
                                 <Button size="sm" onClick={e => handleUpdate(blog)}>Update</Button>
-                                <Button size="sm" color="danger" onClick={e =>{props.handleDelete(blog.id);history.push('/dashboard')
+                                <Button size="sm" color="danger" onClick={e =>{props.handleDelete(blog.id);history.push('/dashboard');history.go(0)
                                 }}>Delete</Button>
                             </div>
                     </div>
