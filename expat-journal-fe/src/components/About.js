@@ -5,6 +5,7 @@ import {CardColumns} from "reactstrap"
 function About(){
     return (
         <div className="aboutcards">
+        <h1>Foreigner Files Team</h1>
         <CardColumns >
             <PLCard />  
             <BackEndCard />
